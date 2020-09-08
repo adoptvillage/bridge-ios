@@ -2,9 +2,7 @@
 //  SceneDelegate.swift
 //  BRIDGE
 //
-//  Created by Abhi Kulshrestha on 28/08/20.
-//  Copyright © 2020 Abhi Kulshrestha. All rights reserved.
-//
+
 
 import UIKit
 import SwiftUI
