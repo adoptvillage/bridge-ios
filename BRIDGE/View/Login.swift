@@ -12,8 +12,9 @@ import SwiftUI
 struct Login : View {
     
     @State var email = ""
-    @State var pass = ""
+    @State var password = ""
     @State var visible = false
+    @ObservedObject var loginViewModel = LoginViewModel()
     
     var body : some View{
         
@@ -42,11 +43,11 @@ struct Login : View {
                         .frame(width: 15, height: 18)
                         .foregroundColor(Color(.systemIndigo))
                     if self.visible{
-                        TextField("Password", text: self.$pass)
+                        TextField("Password", text: self.$password)
                             .autocapitalization(.none)
                     }
                     else{
-                        SecureField("Password", text: self.$pass)
+                        SecureField("Password", text: self.$password)
                             .autocapitalization(.none)
                     }
                     
@@ -81,7 +82,9 @@ struct Login : View {
             .padding(.top, 25)
             
             Button(action: {
-                
+                self.loginViewModel.loginUser(email: self.email, password: self.password) { (response) in
+                    print(response)
+                }
             }) {
                 
                 Text("LOGIN")

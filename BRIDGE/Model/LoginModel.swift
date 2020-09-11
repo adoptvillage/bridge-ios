@@ -12,7 +12,7 @@ final class LoginModel {
     }
     
     struct LoginResponseData: Codable {
-        var token_id: String
+        var message: String?
     }
     
 }
