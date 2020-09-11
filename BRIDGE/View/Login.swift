@@ -30,7 +30,7 @@ struct Login : View {
                     
                     
                 }.padding(15)
-                    .background(Capsule().fill(Color.white))
+                    .background(Capsule().fill(Color(.tertiarySystemBackground)))
                     .padding(.vertical, 10)
                 
                 //Divider()
@@ -60,13 +60,13 @@ struct Login : View {
                     
                     
                 }.padding(15)
-                    .background(Capsule().fill(Color.white))
+                    .background(Capsule().fill(Color(.tertiarySystemBackground)))
                     .padding(.vertical, 10)
                 
                 HStack{
                     Spacer(minLength: 0)
                     Text("Forgot Password?")
-                        .foregroundColor(Color.black.opacity(0.4))
+                        .foregroundColor(Color(.systemGray))
                 }.padding(.trailing, 10)
                     .padding(.vertical, 0)
                 
@@ -76,7 +76,7 @@ struct Login : View {
             .padding(.vertical)
             .padding(.horizontal, 20)
             .padding(.bottom, 40)
-            .background(Color.black.opacity(0.1))
+            .background(Color(.secondarySystemBackground))
             .cornerRadius(30)
             .padding(.top, 25)
             

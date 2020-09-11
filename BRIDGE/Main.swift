@@ -57,7 +57,7 @@ struct main : View{
                         .frame(width: (UIScreen.main.bounds.width - 80) / 2)
                 }.background(self.index == 1 ? Color(.systemIndigo) : Color.clear)
                 .clipShape(Capsule())
-            }.background(Color.black.opacity(0.1))
+            }.background(Color(.secondarySystemBackground))
             .clipShape(Capsule())
                 .padding(.top, 0)
             

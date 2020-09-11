@@ -15,9 +15,15 @@ struct SignUP : View {
     @State var confirmPassword = ""
     @State var passwordVisible = false
     @State var confirmPasswordVisible = false
-    @State private var selectedColor = 0
+    
+    @State private var selectedRole: Int = -1
     @State var inActivity: Bool = false
     @ObservedObject var signUpViewModel = SignUpViewModel()
+    @State var signUpDisabled: Bool = true
+    @State var showAlert = false
+    @State var alertMessage = ""
+    
+    
     
     var body : some View{
         GeometryReader() { geometry in
@@ -34,7 +40,7 @@ struct SignUP : View {
                     TextField("Name", text: self.$name)
                     
                 }.padding(15)
-                    .background(Capsule().fill(Color.white))
+                    .background(Capsule().fill(Color(.tertiarySystemBackground)))
                     .padding(.vertical, 10)
                 
                 //  Divider()
@@ -49,7 +55,7 @@ struct SignUP : View {
                     
                     
                 }.padding(15)
-                    .background(Capsule().fill(Color.white))
+                    .background(Capsule().fill(Color(.tertiarySystemBackground)))
                     .padding(.vertical, 10)
                 
                 //   Divider()
@@ -78,7 +84,7 @@ struct SignUP : View {
                     }
                     
                 }.padding(15)
-                    .background(Capsule().fill(Color.white))
+                    .background(Capsule().fill(Color(.tertiarySystemBackground)))
                     .padding(.vertical, 10)
                 
                 
@@ -106,7 +112,7 @@ struct SignUP : View {
                     }
                     
                 }.padding(15)
-                    .background(Capsule().fill(Color.white))
+                    .background(Capsule().fill(Color(.tertiarySystemBackground)))
                     .padding(.vertical, 10)
                 
                 
@@ -115,21 +121,23 @@ struct SignUP : View {
             .padding(.vertical)
             .padding(.horizontal, 20)
             .padding(.bottom, 20)
-            .background(Color.black.opacity(0.1))
+            .background(Color(.secondarySystemBackground))
             .cornerRadius(30)
             .padding(.top, 30)
 //            .frame(width: geometry.size.width - 20, height: geometry.size.height - 20)
             
             
             Button(action: {
-                
-                let signUpData = SignUpModel.SignUpRequestData(name: self.name, email: self.email, password: self.password, role: 0)
-                self.signUpViewModel.registerUser(roleSelection: 0, signUpData: signUpData, confirmPassword: self.confirmPassword) { (response) in
+                print(self.selectedRole)
+                let signUpData = SignUpModel.SignUpRequestData(name: self.name, email: self.email, password: self.password, role: self.selectedRole)
+                self.signUpViewModel.registerUser(roleSelection: self.selectedRole, signUpData: signUpData, confirmPassword: self.confirmPassword) { (response) in
+                    self.alertMessage = response.message
+                    self.showAlert = true
                     print(response.message)
                 }
                 
                 
-            }) {
+                }) {
                 if self.signUpViewModel.inActivity {
                     ActivityIndicator(isAnimating: self.$signUpViewModel.inActivity)
                         .foregroundColor(.white)
@@ -144,17 +152,30 @@ struct SignUP : View {
                 
                 
                 
-            }.background(Color(.systemIndigo))
+                }.alert(isPresented: self.$showAlert) {
+                    Alert(title: Text(self.alertMessage))
+                }
+            .background(self.name == "" ||
+                        self.email.isEmpty ||
+                        self.password.isEmpty ||
+                        self.confirmPassword.isEmpty ||
+                        self.selectedRole == -1 ? Color(.gray) : Color(.systemIndigo))
                 .cornerRadius(30)
                 .offset(y: -40)
                 .padding(.bottom, -40)
+                .disabled(self.name == "" ||
+                            self.email.isEmpty ||
+                            self.password.isEmpty ||
+                            self.confirmPassword.isEmpty ||
+                            self.selectedRole == -1 ? true : false)
             
             VStack {
-                
-                Picker(selection: self.$selectedColor, label: Text("")) {
-                    Text("DONOR").tag(1)
-                    Text("RECIPIENT").tag(2)
-                    Text("UNIVERSITY").tag(3)
+                Text("Select a role")
+                    .foregroundColor(Color(.systemGray))
+                Picker(selection: self.$selectedRole, label: Text("")) {
+                    Text("DONOR").tag(0)
+                    Text("RECIPIENT").tag(1)
+                    Text("UNIVERSITY").tag(2)
                 }
                 .labelsHidden()
                 .pickerStyle(SegmentedPickerStyle())
@@ -163,7 +184,6 @@ struct SignUP : View {
             
         }
         }
-        
     }
 }
 

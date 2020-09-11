@@ -7,6 +7,7 @@
 import Foundation
 
 let baseUrl: String = "http://bridge-temp.herokuapp.com/"
+//let baseUrl: String = "http://127.0.0.1:5000/"
 
 struct URLStringConstants {
     struct User {

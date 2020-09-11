@@ -9,10 +9,8 @@ import Combine
 
 class SignUpViewModel: ObservableObject {
     private var cancellable: AnyCancellable?
-    
     @Published var signUpResponseData = SignUpModel.SignUpResponseData(message: "")
-     @Published var inActivity: Bool = false
-    
+    @Published var inActivity: Bool = false
     
     func registerUser(
         roleSelection: Int,
@@ -23,17 +21,12 @@ class SignUpViewModel: ObservableObject {
         
         self.inActivity = true
         
-        // make variable for sign up data
-        var signUpData = signUpData
-        
-        //assign role as per picker selection
-        signUpData.role = roleSelection
-        
 
         //check password fields
         if signUpData.password != confirmPassword {
             let signUpResponseData = SignUpModel.SignUpResponseData(message: "Password did not match")
             completion(signUpResponseData)
+            self.inActivity = false
             return
         }
 
@@ -54,12 +47,5 @@ class SignUpViewModel: ObservableObject {
         })
     }
     
-    func update(using data: SignUpModel.SignUpResponseData) {
-        signUpResponseData = data
-    }
-    
-    struct SignUpNetworkModel: Decodable {
-        var message: String?
-    }
 
 }
