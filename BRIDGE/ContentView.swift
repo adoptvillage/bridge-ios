@@ -7,10 +7,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-      //  Text("Hello, World!")
-        ZStack{
-            main()
+    @State private var selection = 0
+    @ObservedObject var authModel = AuthModel()
+    
+    @ViewBuilder var body: some View {
+        if authModel.isLogged! {
+            TabBar(selection: $selection)
+                .onAppear {
+                    // reset selection and show home page whenever login done
+                    self.selection = 0
+            }
+        } else {
+            ZStack{
+                main()
+            }
+            
         }
     }
 }

@@ -14,6 +14,8 @@ struct Login : View {
     @State var email = ""
     @State var password = ""
     @State var visible = false
+    @State var alertMessage = ""
+    @State var showAlert = false
     @ObservedObject var loginViewModel = LoginViewModel()
     
     var body : some View{
@@ -83,21 +85,43 @@ struct Login : View {
             
             Button(action: {
                 self.loginViewModel.loginUser(email: self.email, password: self.password) { (response) in
+                    if var error = response.message {
+                        
+                        if error == "INVALID_PASSWORD" {
+                            error = "Password is not valid"
+                        }
+                        
+                        self.showAlert = true
+                        self.alertMessage = error
+                        
+                    }
                     print(response)
                 }
             }) {
-                
-                Text("LOGIN")
+                if self.loginViewModel.inActivity {
+                    ActivityIndicator(isAnimating: self.$loginViewModel.inActivity)
+                        .foregroundColor(.white)
+                        .frame(width: (UIScreen.main.bounds.width - 200), height: 50)
+                } else {
+                    Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(.heavy)
                     .padding(.vertical)
                     .frame(width: (UIScreen.main.bounds.width - 200))
+                }
                 
                 
-            }.background(Color(.systemIndigo))
+                
+            }.background(self.email.isEmpty ||
+                self.password.isEmpty ? Color(.gray) : Color(.systemIndigo))
                 .cornerRadius(30)
                 .offset(y: -40)
                 .padding(.bottom, -40)
+                .disabled(self.email.isEmpty ||
+                    self.password.isEmpty ? true : false)
+            .alert(isPresented: self.$showAlert) {
+                Alert(title: Text(self.alertMessage))
+            }
             
         }
         

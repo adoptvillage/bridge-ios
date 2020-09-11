@@ -19,7 +19,15 @@ class LoginViewModel: ObservableObject {
         
         let loginRequestData = LoginModel.LoginRequestData(email: email, password: password)
         
+        if !email.isValidEmail() {
+            let loginResponse = LoginModel.LoginResponseData(message: "Enter valid email address")
+            completion(loginResponse)
+            self.inActivity = false
+            return
+        }
+        
         guard let uploadData = try? JSONEncoder().encode(loginRequestData) else {
+            self.inActivity = false
             return
         }
         
