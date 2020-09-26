@@ -13,5 +13,6 @@ struct URLStringConstants {
     struct User {
         static let login: String = baseUrl + "user/login"
         static let register: String = baseUrl + "user/register"
+        static let profile: String = baseUrl + "user/profile"
     }
 }

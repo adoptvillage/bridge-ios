@@ -180,10 +180,10 @@ struct SignUP : View {
                 .labelsHidden()
                 .pickerStyle(SegmentedPickerStyle())
                 
-            }.padding(.top, 30)
+            }
             
         }
-        }
+        }.padding(.bottom, 50)
     }
 }
 
