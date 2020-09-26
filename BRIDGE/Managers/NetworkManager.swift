@@ -27,7 +27,7 @@ struct NetworkManager {
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         if !token.isEmpty {
-            request.setValue(token, forHTTPHeaderField: "Authorization")
+            request.setValue(token, forHTTPHeaderField: "authorization")
         }
         request.httpMethod = httpMethod
         request.httpBody = uploadData

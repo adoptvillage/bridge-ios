@@ -16,6 +16,7 @@ final class SignUpModel {
     }
     
     struct SignUpResponseData: Codable {
+        var verify_link: String
         var message: String
     }
     

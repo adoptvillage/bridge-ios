@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8308478325109B68009CDE27 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8308478225109B68009CDE27 /* Profile.swift */; };
+		8308478525109E1A009CDE27 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8308478425109E1A009CDE27 /* ProfileModel.swift */; };
 		833B7BB8250A5F0500EDF77E /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B7BB7250A5F0500EDF77E /* LoginModel.swift */; };
 		833B7BBA250A5F7900EDF77E /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B7BB9250A5F7900EDF77E /* SignUpModel.swift */; };
 		833B7BBC250A5FF600EDF77E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B7BBB250A5FF600EDF77E /* SignUpViewModel.swift */; };
@@ -20,7 +22,7 @@
 		839676CD250B6E2500D488EF /* UserDeafults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676CC250B6E2500D488EF /* UserDeafults+Ext.swift */; };
 		839676CF250B6F4500D488EF /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676CE250B6F4500D488EF /* TabBar.swift */; };
 		839676D3250B6F8F00D488EF /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676D2250B6F8F00D488EF /* Home.swift */; };
-		839676D5250B710C00D488EF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676D4250B710C00D488EF /* HomeViewModel.swift */; };
+		839676D5250B710C00D488EF /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676D4250B710C00D488EF /* ProfileViewModel.swift */; };
 		83B54D4D250BA7D4000D6383 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B54D4C250BA7D4000D6383 /* String+Ext.swift */; };
 		E132AF1A24F926C800D1B8C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132AF1924F926C800D1B8C3 /* AppDelegate.swift */; };
 		E132AF1C24F926C800D1B8C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132AF1B24F926C800D1B8C3 /* SceneDelegate.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8308478225109B68009CDE27 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		8308478425109E1A009CDE27 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		833B7BB7250A5F0500EDF77E /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		833B7BB9250A5F7900EDF77E /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		833B7BBB250A5FF600EDF77E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -48,7 +52,7 @@
 		839676CC250B6E2500D488EF /* UserDeafults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDeafults+Ext.swift"; sourceTree = "<group>"; };
 		839676CE250B6F4500D488EF /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		839676D2250B6F8F00D488EF /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		839676D4250B710C00D488EF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		839676D4250B710C00D488EF /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		83B54D4C250BA7D4000D6383 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E132AF1624F926C800D1B8C3 /* BRIDGE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BRIDGE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132AF1924F926C800D1B8C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 				839676CE250B6F4500D488EF /* TabBar.swift */,
 				839676D2250B6F8F00D488EF /* Home.swift */,
 				E1D82009250FA9AE00630620 /* CircleImage.swift */,
+				8308478225109B68009CDE27 /* Profile.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -93,6 +98,7 @@
 				833B7BB7250A5F0500EDF77E /* LoginModel.swift */,
 				833B7BB9250A5F7900EDF77E /* SignUpModel.swift */,
 				839676C9250B6DE200D488EF /* AuthModel.swift */,
+				8308478425109E1A009CDE27 /* ProfileModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -102,7 +108,7 @@
 			children = (
 				833B7BBB250A5FF600EDF77E /* SignUpViewModel.swift */,
 				839676C2250B5E4500D488EF /* LoginViewModel.swift */,
-				839676D4250B710C00D488EF /* HomeViewModel.swift */,
+				839676D4250B710C00D488EF /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -215,7 +221,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Abhi Kulshrestha";
 				TargetAttributes = {
 					E132AF1524F926C800D1B8C3 = {
@@ -262,7 +268,8 @@
 				E132AF1A24F926C800D1B8C3 /* AppDelegate.swift in Sources */,
 				833B7BB8250A5F0500EDF77E /* LoginModel.swift in Sources */,
 				833B7BBF250A615F00EDF77E /* NetworkManager.swift in Sources */,
-				839676D5250B710C00D488EF /* HomeViewModel.swift in Sources */,
+				8308478325109B68009CDE27 /* Profile.swift in Sources */,
+				839676D5250B710C00D488EF /* ProfileViewModel.swift in Sources */,
 				E176ADB224F9763A00D0C545 /* SignUP.swift in Sources */,
 				839676CD250B6E2500D488EF /* UserDeafults+Ext.swift in Sources */,
 				833B7BC5250A6EA900EDF77E /* ActivityIndicator.swift in Sources */,
@@ -273,6 +280,7 @@
 				833B7BBC250A5FF600EDF77E /* SignUpViewModel.swift in Sources */,
 				E176ADB024F975E600D0C545 /* Login.swift in Sources */,
 				839676C3250B5E4500D488EF /* LoginViewModel.swift in Sources */,
+				8308478525109E1A009CDE27 /* ProfileModel.swift in Sources */,
 				839676D3250B6F8F00D488EF /* Home.swift in Sources */,
 				83B54D4D250BA7D4000D6383 /* String+Ext.swift in Sources */,
 				E132AF1C24F926C800D1B8C3 /* SceneDelegate.swift in Sources */,
@@ -324,6 +332,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -384,6 +393,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

@@ -9,7 +9,7 @@ import Combine
 
 class SignUpViewModel: ObservableObject {
     private var cancellable: AnyCancellable?
-    @Published var signUpResponseData = SignUpModel.SignUpResponseData(message: "")
+    @Published var signUpResponseData = SignUpModel.SignUpResponseData(verify_link: "", message: "")
     @Published var inActivity: Bool = false
     
     func registerUser(
@@ -24,7 +24,7 @@ class SignUpViewModel: ObservableObject {
 
         //check password fields
         if signUpData.password != confirmPassword {
-            let signUpResponseData = SignUpModel.SignUpResponseData(message: "Password did not match")
+            let signUpResponseData = SignUpModel.SignUpResponseData(verify_link: "", message: "Password did not match")
             completion(signUpResponseData)
             self.inActivity = false
             return
@@ -42,6 +42,7 @@ class SignUpViewModel: ObservableObject {
         .sink(receiveCompletion: { _ in
             self.inActivity = false
         }, receiveValue: { value in
+            print(value.verify_link)
             self.signUpResponseData = value
             completion(value)
         })

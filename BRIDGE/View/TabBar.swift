@@ -22,7 +22,15 @@ struct TabBar: View {
                     }
             }.tag(0)
             
-            //Relation
+            //Profile
+            Profile()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "person.circle.fill")
+                            .imageScale(.large)
+                        Text("Profile")
+                    }
+            }.tag(1)
             
         }
     }

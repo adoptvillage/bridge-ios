@@ -20,6 +20,7 @@ struct main : View{
                 Image("logo1")
                 .resizable()
                 .frame(width: 130, height: 130)
+                    .padding(.bottom, 20)
             } else {
                 Spacer(minLength: geometry.size.height / 8)
             }
@@ -72,8 +73,9 @@ struct main : View{
                 
             }
             
-        }.padding(.bottom, 50)
-        .padding(.horizontal, 50)
+        }.padding(.all)
+        .padding(.top, 30)
+        
             
             
         }
