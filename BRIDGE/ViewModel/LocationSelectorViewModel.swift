@@ -15,7 +15,7 @@ class LocationSelectorViewModel: ObservableObject {
     @Published var villageData: [District]!
     @Published var selectedState: Int = 0 {
         willSet {
-            print("state changed", newValue, districtSelections[newValue] ?? 0)
+//            print("state changed", newValue, districtSelections[newValue] ?? 0)
             selectedDistrict = districtSelections[newValue] ?? 0
             id = UUID()
         }
@@ -23,7 +23,7 @@ class LocationSelectorViewModel: ObservableObject {
     @Published var selectedDistrict: Int = 0 {
         willSet {
             DispatchQueue.main.async { [newValue] in
-                print("city changed", newValue)
+//                print("district changed", newValue)
                 self.selectedSubDistrict = self.subDistrictSelections[newValue] ?? 0
                 self.districtSelections[self.selectedState] = newValue
             }
@@ -34,7 +34,7 @@ class LocationSelectorViewModel: ObservableObject {
     @Published var selectedSubDistrict: Int = 0 {
         willSet {
             DispatchQueue.main.async { [newValue] in
-                print("subdistrict changed", newValue)
+//                print("subdistrict changed", newValue)
                 self.selectedArea = self.areaSelections[newValue] ?? 0
                 self.subDistrictSelections[self.selectedDistrict] = newValue
             }
@@ -44,7 +44,7 @@ class LocationSelectorViewModel: ObservableObject {
     @Published var selectedArea: Int = 0 {
         willSet {
             DispatchQueue.main.async { [newValue] in
-                print("area changed", newValue)
+//                print("area changed", newValue)
                 self.areaSelections[self.selectedSubDistrict] = newValue
             }
             id = UUID()
@@ -100,6 +100,18 @@ class LocationSelectorViewModel: ObservableObject {
         }
         
         
+    }
+    
+    func updatePreferredRegion() {
+        print(stateNames[selectedState])
+        if selectedState == 26 {
+            print(villageData[selectedDistrict].district)
+            print(subDistrictNames[selectedSubDistrict])
+            print(areaNames[selectedArea])
+        } else {
+            print(districtNames[selectedDistrict])
+            
+        }
     }
     
 }

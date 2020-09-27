@@ -11,16 +11,21 @@ struct Home: View {
     var body: some View {
         NavigationView {
             VStack {
+                Text("Welcome to Bridge, Please Adopt your village in order to continue")
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color(.systemGray2))
+                    .padding()
                 Button(action: {
                     showLocationSelector.toggle()
                 }) {
-                    Text("Select location")
+                    Text("Adopt your village")
                     .foregroundColor(.white)
                     .fontWeight(.heavy)
                     .padding(.vertical)
                     .frame(width: (UIScreen.main.bounds.width - 200))
-                }
-            }.background(Color(.systemIndigo))
+                }.background(Color(.systemIndigo))
+                .cornerRadius(5.0)
+            }
             .navigationBarTitle("Welcome")
             .sheet(isPresented: $showLocationSelector) {
                 LocationSelector( isPresented: $showLocationSelector)
