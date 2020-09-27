@@ -27,6 +27,7 @@ struct Home: View {
                             .foregroundColor(.white)
                             .padding(.top)
                             .padding(.bottom, 5)
+                            .shadow(color: .black, radius: 5)
                         HStack(spacing : 10){
                            
                             VStack(alignment: .leading, spacing: 10){
@@ -107,6 +108,7 @@ struct Home: View {
                     .frame(height : UIScreen.main.bounds.height / 3.2)
                     .background(Color(.systemIndigo).opacity(0.8))
                     .cornerRadius(20)
+                    .shadow(color: .gray, radius: 10)
                 
                    
               
@@ -120,6 +122,7 @@ struct Home: View {
                             .foregroundColor(.white)
                             .frame(height: 40)
                             .padding(.top, 15)
+                            .shadow(color: .gray, radius: 5)
                         Divider()
                         Text("23")
                             .fontWeight(.bold)
@@ -133,6 +136,7 @@ struct Home: View {
                     .background(Color(.systemGray4))
                     .cornerRadius(20)
                     .padding(.trailing, 10)
+                    .shadow(color: .gray, radius: 7)
                     
                     VStack{
                         Text("Amounted Donated")
@@ -140,6 +144,7 @@ struct Home: View {
                             .font(.system(size: 15))
                             .foregroundColor(.white)
                             .frame(height: 40)
+                            .shadow(color: .gray, radius: 5)
                         Divider()
                         Text("$400")
                             .fontWeight(.bold)
@@ -151,6 +156,7 @@ struct Home: View {
                     .frame(height : UIScreen.main.bounds.height / 5.5)
                     .background(Color(.systemGray4))
                     .cornerRadius(20)
+                    .shadow(color: .gray, radius: 7)
                 }.padding(.bottom, 20)
                 
                 HStack(){
@@ -170,6 +176,7 @@ struct Home: View {
                     .background(Color(.systemIndigo))
                     .cornerRadius(15)
                     .padding(.trailing, 10)
+                    .shadow(color: .gray, radius: 7)
                     
                     Button(action: {
                         
@@ -187,6 +194,7 @@ struct Home: View {
                     .frame(height : UIScreen.main.bounds.height / 15)
                     .background(Color(.systemIndigo))
                     .cornerRadius(15)
+                    .shadow(color: .gray, radius: 7)
                 }
                 
                 
