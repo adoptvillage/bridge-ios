@@ -193,6 +193,12 @@ struct Home: View {
             }.padding(.all)
                     .padding(.trailing, 25)
             .navigationBarTitle("Welcome User!")
+            .navigationBarItems(trailing: Button(action: {
+                
+            }){
+                Text("Apply")
+            }
+            )
                 }
             }
             
