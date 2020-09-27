@@ -13,88 +13,185 @@ struct Home: View {
     var body: some View {
         NavigationView {
             GeometryReader{ geometry in
-                ScrollView{
-            VStack{
                 
-                BarCharts().padding(.top)
-              
-                VStack(alignment: .center, spacing: 0){
-                    HStack{
-                        Text("Money Donated")
-                            .font(.system(size: 15))
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
-                        Text(" $ 82378")
-                            .fontWeight(.heavy)
-                            .font(.system(size: 28))
-                            .foregroundColor(.green)
-                    }.padding()
-                    .frame(width: UIScreen.main.bounds.width - 50)
-                    .frame(height : UIScreen.main.bounds.height / 15)
-                    .background(Color(.systemGray4))
-                    .cornerRadius(15)
+                ScrollView{
                     
-                }.padding(.top)
-                .padding(.bottom)
-                HStack{
-               PieCharts()
-                    VStack{
-                        HStack{
-                            VStack{
-                                HStack{
-                            Button(action: {
+            VStack{
+                HStack(spacing:15){
+                    
+                    VStack(alignment: .leading, spacing: 12) {
+                        
+                        Text("Application No. :- ")
+                            .fontWeight(.bold)
+                            .font(.system(size: 21))
+                            .foregroundColor(.white)
+                            .padding(.top)
+                            .padding(.bottom, 5)
+                        HStack(spacing : 10){
+                           
+                            VStack(alignment: .leading, spacing: 10){
+                                HStack(spacing: 10){
+                                    Text("Donor :- ")
+                                        .frame(width: 120)
+                                    Divider()
+                                    
+                                    Text("Vatsal")
+                                        .foregroundColor(.red)
+                                        .padding(.leading, 50)
+                                }
+                                Divider()
                                 
-                            }) {
+                                HStack(spacing: 10){
+                                    Text("Recipient :- ")
+                                        .frame(width: 120)
+                                    Divider()
+                                    Text("Vatsal")
+                                        .foregroundColor(.green)
+                                        .padding(.leading, 50)
+                                }
+                                Divider()
                                 
-                                Text("History")
-                                    .font(.system(size: 20))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                
-                            }.padding()
-                            .frame(width: UIScreen.main.bounds.width/2.5)
-                            .frame(height : UIScreen.main.bounds.height / 15)
-                            .background(Color(.red))
-                            .cornerRadius(15)
+                                HStack(spacing: 10){
+                                    Text("Amount :- ")
+                                        .frame(width: 120)
+                                    Divider()
+                                    Text("$400")
+                                        .foregroundColor(.yellow)
+                                        .padding(.leading, 50)
                                 }
                                 HStack{
-                            Button(action: {
-                                
-                            }) {
-                                
-                                Text("Status")
-                                    .font(.system(size: 20))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                
-                            }.padding()
-                            .frame(width: UIScreen.main.bounds.width/2.5)
-                            .frame(height : UIScreen.main.bounds.height / 15)
-                            .background(Color(.green))
-                            .cornerRadius(15)
-                                }.padding(.top)
-                            
-                            HStack{
-                            Button(action: {
-                                
-                            }) {
-                                
-                                Text("Apply")
-                                    .font(.system(size: 20))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                
-                            }.padding()
-                            .frame(width: UIScreen.main.bounds.width/2.5)
-                            .frame(height : UIScreen.main.bounds.height / 15)
-                            .background(Color(.systemIndigo))
-                            .cornerRadius(15)
-                            }.padding(.top)
-                            }.padding(.leading)
+                                    VStack{
+                                    Capsule()
+                                        .fill(Color.green)
+                                        .frame(width: UIScreen.main.bounds.width/4, height: 5)
+                                        
+                                    Text("Application filled")
+                                        .foregroundColor(.white)
+                                        .fontWeight(.thin)
+                                        .font(.system(size: 10))
+                                        .frame(width: UIScreen.main.bounds.width/4, height: 20)
+                                        
+                                        
+                                    }
+                                    VStack{
+                                    Capsule()
+                                        .fill(Color.green)
+                                        .frame(width: UIScreen.main.bounds.width/4, height: 5)
+                                    
+                                        Text("Being Reviewed")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.thin)
+                                            .font(.system(size: 10))
+                                            .frame(width: UIScreen.main.bounds.width/4, height: 20)
+                                    }
+                                    VStack{
+                                    Capsule()
+                                        .fill(Color.gray)
+                                        .frame(width: UIScreen.main.bounds.width/4, height: 5)
+                                        
+                                        Text("Accepted")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.thin)
+                                            .font(.system(size: 10))
+                                            .frame(width: UIScreen.main.bounds.width/4, height: 20)
+                                    }
+                                    
+                                }.frame(alignment: .center)
+                                .padding(.vertical)
+                          
+                                }
                         }
-                    }
+                        }
+                    .padding(.all)
+                    .frame(width: UIScreen.main.bounds.width - 40)
+                    .frame(height : UIScreen.main.bounds.height / 3.2)
+                    .background(Color(.systemIndigo).opacity(0.8))
+                    .cornerRadius(20)
+                
+                   
+              
+               
+                }.padding(.bottom)
+                HStack(){
+                    VStack{
+                        Text("Succesfull Applications")
+                            .fontWeight(.bold)
+                            .font(.system(size: 15))
+                            .foregroundColor(.white)
+                            .frame(height: 40)
+                            .padding(.top, 15)
+                        Divider()
+                        Text("23")
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(.systemIndigo))
+                            .font(.system(size: 35))
+                            .padding(.bottom, 15)
+                            
+                    }.padding(.all)
+                    .frame(width: UIScreen.main.bounds.width/2.4)
+                    .frame(height : UIScreen.main.bounds.height / 5.5)
+                    .background(Color(.systemGray4))
+                    .cornerRadius(20)
+                    .padding(.trailing, 10)
+                    
+                    VStack{
+                        Text("Amounted Donated")
+                            .fontWeight(.bold)
+                            .font(.system(size: 15))
+                            .foregroundColor(.white)
+                            .frame(height: 40)
+                        Divider()
+                        Text("$400")
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(.systemIndigo))
+                            .font(.system(size: 35))
+                            
+                    }.padding()
+                    .frame(width: UIScreen.main.bounds.width/2.4)
+                    .frame(height : UIScreen.main.bounds.height / 5.5)
+                    .background(Color(.systemGray4))
+                    .cornerRadius(20)
+                }.padding(.bottom, 20)
+                
+                HStack(){
+                    
+                    Button(action: {
+                        
+                    }) {
+                        
+                        Text("History")
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                        
+                    }.padding()
+                    .frame(width: UIScreen.main.bounds.width/2.5)
+                    .frame(height : UIScreen.main.bounds.height / 15)
+                    .background(Color(.systemIndigo))
+                    .cornerRadius(15)
+                    .padding(.trailing, 10)
+                    
+                    Button(action: {
+                        
+                    }) {
+                        
+                        Text("Preferred Location")
+                            .font(.system(size: 17))
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(height: 50)
+                            
+                        
+                    }.padding()
+                    .frame(width: UIScreen.main.bounds.width/2.5)
+                    .frame(height : UIScreen.main.bounds.height / 15)
+                    .background(Color(.systemIndigo))
+                    .cornerRadius(15)
                 }
-            }.padding(.leading, 25)
+                
+                
+            }.padding(.all)
+                    .padding(.trailing, 25)
             .navigationBarTitle("Welcome User!")
                 }
             }
