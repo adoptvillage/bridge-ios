@@ -15,6 +15,12 @@
 		833B7BBF250A615F00EDF77E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B7BBE250A615F00EDF77E /* NetworkManager.swift */; };
 		833B7BC2250A66AA00EDF77E /* URLStringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B7BC1250A66AA00EDF77E /* URLStringConstants.swift */; };
 		833B7BC5250A6EA900EDF77E /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B7BC4250A6EA900EDF77E /* ActivityIndicator.swift */; };
+		8357C547251F27B500B4A15A /* location.json in Resources */ = {isa = PBXBuildFile; fileRef = 8357C546251F27B500B4A15A /* location.json */; };
+		8357C573251F2E3300B4A15A /* LocatinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357C572251F2E3300B4A15A /* LocatinDataService.swift */; };
+		8357C577251F2F4B00B4A15A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357C576251F2F4B00B4A15A /* HomeViewModel.swift */; };
+		8357C57A251F969A00B4A15A /* locationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357C579251F969A00B4A15A /* locationModel.swift */; };
+		8357C57D251F9D5D00B4A15A /* LocationSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357C57C251F9D5D00B4A15A /* LocationSelector.swift */; };
+		8357C580251F9F4000B4A15A /* LocationSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357C57F251F9F4000B4A15A /* LocationSelectorViewModel.swift */; };
 		839676C3250B5E4500D488EF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676C2250B5E4500D488EF /* LoginViewModel.swift */; };
 		839676C5250B63C400D488EF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676C4250B63C400D488EF /* Strings.swift */; };
 		839676C8250B6A1600D488EF /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676C7250B6A1600D488EF /* KeychainManager.swift */; };
@@ -24,6 +30,7 @@
 		839676D3250B6F8F00D488EF /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676D2250B6F8F00D488EF /* Home.swift */; };
 		839676D5250B710C00D488EF /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676D4250B710C00D488EF /* ProfileViewModel.swift */; };
 		83B54D4D250BA7D4000D6383 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B54D4C250BA7D4000D6383 /* String+Ext.swift */; };
+		83FC034F251FC925009960C1 /* punjabVillages.json in Resources */ = {isa = PBXBuildFile; fileRef = 83FC034E251FC925009960C1 /* punjabVillages.json */; };
 		E132AF1A24F926C800D1B8C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132AF1924F926C800D1B8C3 /* AppDelegate.swift */; };
 		E132AF1C24F926C800D1B8C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132AF1B24F926C800D1B8C3 /* SceneDelegate.swift */; };
 		E132AF1E24F926C800D1B8C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132AF1D24F926C800D1B8C3 /* ContentView.swift */; };
@@ -45,6 +52,12 @@
 		833B7BBE250A615F00EDF77E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		833B7BC1250A66AA00EDF77E /* URLStringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStringConstants.swift; sourceTree = "<group>"; };
 		833B7BC4250A6EA900EDF77E /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		8357C546251F27B500B4A15A /* location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = location.json; sourceTree = "<group>"; };
+		8357C572251F2E3300B4A15A /* LocatinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatinDataService.swift; sourceTree = "<group>"; };
+		8357C576251F2F4B00B4A15A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8357C579251F969A00B4A15A /* locationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationModel.swift; sourceTree = "<group>"; };
+		8357C57C251F9D5D00B4A15A /* LocationSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelector.swift; sourceTree = "<group>"; };
+		8357C57F251F9F4000B4A15A /* LocationSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectorViewModel.swift; sourceTree = "<group>"; };
 		839676C2250B5E4500D488EF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		839676C4250B63C400D488EF /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		839676C7250B6A1600D488EF /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -54,6 +67,7 @@
 		839676D2250B6F8F00D488EF /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		839676D4250B710C00D488EF /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		83B54D4C250BA7D4000D6383 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		83FC034E251FC925009960C1 /* punjabVillages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = punjabVillages.json; sourceTree = "<group>"; };
 		E132AF1624F926C800D1B8C3 /* BRIDGE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BRIDGE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132AF1924F926C800D1B8C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E132AF1B24F926C800D1B8C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +102,7 @@
 				839676D2250B6F8F00D488EF /* Home.swift */,
 				E1D82009250FA9AE00630620 /* CircleImage.swift */,
 				8308478225109B68009CDE27 /* Profile.swift */,
+				8357C57C251F9D5D00B4A15A /* LocationSelector.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -99,6 +114,7 @@
 				833B7BB9250A5F7900EDF77E /* SignUpModel.swift */,
 				839676C9250B6DE200D488EF /* AuthModel.swift */,
 				8308478425109E1A009CDE27 /* ProfileModel.swift */,
+				8357C579251F969A00B4A15A /* locationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +125,8 @@
 				833B7BBB250A5FF600EDF77E /* SignUpViewModel.swift */,
 				839676C2250B5E4500D488EF /* LoginViewModel.swift */,
 				839676D4250B710C00D488EF /* ProfileViewModel.swift */,
+				8357C576251F2F4B00B4A15A /* HomeViewModel.swift */,
+				8357C57F251F9F4000B4A15A /* LocationSelectorViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -135,6 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				833B7BC4250A6EA900EDF77E /* ActivityIndicator.swift */,
+				8357C546251F27B500B4A15A /* location.json */,
+				83FC034E251FC925009960C1 /* punjabVillages.json */,
+				8357C572251F2E3300B4A15A /* LocatinDataService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -253,6 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E132AF2624F926CA00D1B8C3 /* LaunchScreen.storyboard in Resources */,
+				8357C547251F27B500B4A15A /* location.json in Resources */,
+				83FC034F251FC925009960C1 /* punjabVillages.json in Resources */,
 				E132AF2324F926CA00D1B8C3 /* Preview Assets.xcassets in Resources */,
 				E132AF2024F926CA00D1B8C3 /* Assets.xcassets in Resources */,
 			);
@@ -266,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E132AF1A24F926C800D1B8C3 /* AppDelegate.swift in Sources */,
+				8357C573251F2E3300B4A15A /* LocatinDataService.swift in Sources */,
 				833B7BB8250A5F0500EDF77E /* LoginModel.swift in Sources */,
 				833B7BBF250A615F00EDF77E /* NetworkManager.swift in Sources */,
 				8308478325109B68009CDE27 /* Profile.swift in Sources */,
@@ -273,6 +297,7 @@
 				E176ADB224F9763A00D0C545 /* SignUP.swift in Sources */,
 				839676CD250B6E2500D488EF /* UserDeafults+Ext.swift in Sources */,
 				833B7BC5250A6EA900EDF77E /* ActivityIndicator.swift in Sources */,
+				8357C57A251F969A00B4A15A /* locationModel.swift in Sources */,
 				833B7BBA250A5F7900EDF77E /* SignUpModel.swift in Sources */,
 				839676C5250B63C400D488EF /* Strings.swift in Sources */,
 				839676C8250B6A1600D488EF /* KeychainManager.swift in Sources */,
@@ -281,10 +306,13 @@
 				E176ADB024F975E600D0C545 /* Login.swift in Sources */,
 				839676C3250B5E4500D488EF /* LoginViewModel.swift in Sources */,
 				8308478525109E1A009CDE27 /* ProfileModel.swift in Sources */,
+				8357C580251F9F4000B4A15A /* LocationSelectorViewModel.swift in Sources */,
 				839676D3250B6F8F00D488EF /* Home.swift in Sources */,
+				8357C57D251F9D5D00B4A15A /* LocationSelector.swift in Sources */,
 				83B54D4D250BA7D4000D6383 /* String+Ext.swift in Sources */,
 				E132AF1C24F926C800D1B8C3 /* SceneDelegate.swift in Sources */,
 				833B7BC2250A66AA00EDF77E /* URLStringConstants.swift in Sources */,
+				8357C577251F2F4B00B4A15A /* HomeViewModel.swift in Sources */,
 				839676CA250B6DE200D488EF /* AuthModel.swift in Sources */,
 				E1D8200A250FA9AE00630620 /* CircleImage.swift in Sources */,
 				E176ADAE24F9756B00D0C545 /* Main.swift in Sources */,
