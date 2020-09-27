@@ -24,7 +24,7 @@ final class ProfileModel {
         
 
         enum CodingKeys: String, CodingKey {
-            case id, name, email, occupation
+            case id, name, email, occupation, location, address
             case firebaseId = "firebase_id"
             case isVerified = "is_email_verified"
             case profileImage = "profile_image"

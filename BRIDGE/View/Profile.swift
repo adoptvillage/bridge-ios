@@ -18,20 +18,12 @@ struct Profile: View {
     
     func fetchProfile() {
         profileViewModel.getProfile { (profile)  in
-            
-            
-            
-                
-                    self.name = profile.name ?? ""
-                    
-                    self.email = profile.email ?? ""
-                    self.role = profile.isDonor ? "Donor" : profile.isRecipient ? "Recipient" : profile.isModerator ? "Moderator" : ""
-                    self.address = profile.address ?? ""
-                    self.location = profile.location ?? ""
-                    self.occupation = profile.occupation ?? ""
-                
-                
-            
+            self.name = profile.name ?? ""
+            self.email = profile.email ?? ""
+            self.role = profile.isDonor ? "Donor" : profile.isRecipient ? "Recipient" : profile.isModerator ? "Moderator" : ""
+            self.address = profile.address ?? ""
+            self.location = profile.location ?? ""
+            self.occupation = profile.occupation ?? ""
             
             
         }

@@ -8,7 +8,6 @@ import SwiftUI
 import SwiftUICharts
 
 struct Home: View {
-    
     var colors = [Color(.white), Color(.white)]
     var body: some View {
         NavigationView {
@@ -197,9 +196,7 @@ struct Home: View {
             }
             
             }
-            
-        
-        
+
     }
     
 }
