@@ -210,6 +210,8 @@
 			dependencies = (
 			);
 			name = BRIDGE;
+			packageProductDependencies = (
+			);
 			productName = BRIDGE;
 			productReference = E132AF1624F926C800D1B8C3 /* BRIDGE.app */;
 			productType = "com.apple.product-type.application";
@@ -238,6 +240,8 @@
 				Base,
 			);
 			mainGroup = E132AF0D24F926C800D1B8C3;
+			packageReferences = (
+			);
 			productRefGroup = E132AF1724F926C800D1B8C3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
