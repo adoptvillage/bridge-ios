@@ -25,6 +25,7 @@ class ProfileViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .catch { _ in Just(self.profileData) }
             .sink { profile in
+                print(profile.location)
                 completion(profile)
             }
     }
