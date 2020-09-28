@@ -1,9 +1,7 @@
 //
 //  CircleImage.swift
-//  BRIDGE
-//
-//  Created by Abhi Kulshrestha on 14/09/20.
-//  Copyright © 2020 Abhi Kulshrestha. All rights reserved.
+//  Created on 15/09/20
+//  Created for Bridge - Adopt Your Village
 //
 
 import Foundation

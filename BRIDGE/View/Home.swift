@@ -1,11 +1,10 @@
 //
-//  Hoome.swift
+//  Home.swift
 //  Created on 11/09/20
 //  Created for Bridge - Adopt Your Village
 //
 
 import SwiftUI
-import SwiftUICharts
 
 struct Home: View {
     @State var showLocationSelector = false

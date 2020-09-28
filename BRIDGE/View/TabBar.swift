@@ -22,6 +22,15 @@ struct TabBar: View {
                     }
             }.tag(0)
             
+            Application()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "list.dash")
+                            .imageScale(.large)
+                        Text("Applications")
+                    }
+            }.tag(1)
+            
             //Profile
             Profile()
                 .tabItem {
@@ -30,7 +39,7 @@ struct TabBar: View {
                             .imageScale(.large)
                         Text("Profile")
                     }
-            }.tag(1)
+            }.tag(2)
             
         }
     }

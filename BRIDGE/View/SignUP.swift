@@ -96,12 +96,12 @@ struct SignUP : View {
                         .foregroundColor(Color(.systemIndigo))
                     
                     if self.confirmPasswordVisible{
-                        TextField("Re-Enter Passwoord", text: self.$confirmPassword)
+                        TextField("Re-Enter Password", text: self.$confirmPassword)
                             .autocapitalization(.none)
                     }
                     else{
                         
-                        SecureField("Confirm Passwoord", text: self.$confirmPassword)
+                        SecureField("Confirm Password", text: self.$confirmPassword)
                     }
                     Button(action: {
                         self.confirmPasswordVisible.toggle()
