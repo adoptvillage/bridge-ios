@@ -101,6 +101,7 @@ struct Home: View {
                                 .padding(.vertical)
                           
                                 }
+<<<<<<< Updated upstream
                         }
                         }
                     .padding(.all)
@@ -162,6 +163,56 @@ struct Home: View {
                 HStack(){
                     
                     Button(action: {
+=======
+                            }
+                            .padding(.all)
+                            .frame(width: UIScreen.main.bounds.width - 40)
+                            .frame(height : UIScreen.main.bounds.height / 3.2)
+                            .background(Color(.secondarySystemBackground))
+                            .cornerRadius(20)
+                            .shadow(color: .gray, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                            
+                            
+                            
+                            
+                        }.padding(.bottom)
+                        HStack(){
+                            VStack{
+                                Text("Succesfull Applications")
+                                    .font(.system(size: 15))
+                                    .frame(height: 40)
+                                Divider()
+                                Text("23")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(.systemIndigo))
+                                    .font(.system(size: 25))
+                                
+                            }.padding(.all)
+                            .frame(width: UIScreen.main.bounds.width/2.4)
+                            .frame(height : UIScreen.main.bounds.height / 5.5)
+                            .background(Color(.secondarySystemBackground))
+                            .cornerRadius(20)
+                            .padding(.trailing, 10)
+                            .shadow(color: .gray, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                            
+                            VStack{
+                                Text("Amounted Donated")
+                                    .font(.system(size: 15))
+                                    .frame(height: 40)
+                                Divider()
+                                Text("$400")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(.systemIndigo))
+                                    .font(.system(size: 25))
+                                
+                            }.padding()
+                            .frame(width: UIScreen.main.bounds.width/2.4)
+                            .frame(height : UIScreen.main.bounds.height / 5.5)
+                            .background(Color(.secondarySystemBackground))
+                            .cornerRadius(20)
+                            .shadow(color: .gray, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                        }.padding(.bottom, 20)
+>>>>>>> Stashed changes
                         
                     }) {
                         
@@ -200,6 +251,7 @@ struct Home: View {
                 
             }.padding(.all)
                     .padding(.trailing, 25)
+<<<<<<< Updated upstream
             .navigationBarTitle("Welcome User!")
             .navigationBarItems(trailing: Button(action: {
                 
@@ -207,6 +259,19 @@ struct Home: View {
                 Text("Apply")
             }
             )
+=======
+                    .navigationBarTitle("Welcome!")
+                    .navigationBarItems(trailing: Button(action: {
+                        
+                    }) {
+                        
+                        Text("Apply")
+                        
+                    } )
+                    .sheet(isPresented: $showLocationSelector) {
+                        LocationSelector( isPresented: $showLocationSelector)
+                    }
+>>>>>>> Stashed changes
                 }
             }
             
