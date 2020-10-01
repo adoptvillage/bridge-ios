@@ -6,6 +6,7 @@
 
 import Foundation
 import Combine
+import FirebaseAuth
 
 class LoginViewModel: ObservableObject {
     
@@ -13,64 +14,23 @@ class LoginViewModel: ObservableObject {
     private var cancellable: AnyCancellable?
     @Published var inActivity: Bool = false
     
-    func loginUser(email: String, password: String,
-                   completion: @escaping (LoginModel.LoginResponseData) -> Void) {
+    func loginUser(email: String, password: String, completion: @escaping (String) -> Void ) {
         self.inActivity = true
-        
-        let loginRequestData = LoginModel.LoginRequestData(email: email, password: password)
-        
-        if !email.isValidEmail() {
-            let loginResponse = LoginModel.LoginResponseData(message: "Enter valid email address")
-            completion(loginResponse)
-            self.inActivity = false
-            return
-        }
-        
-        guard let uploadData = try? JSONEncoder().encode(loginRequestData) else {
-            self.inActivity = false
-            return
-        }
-        
-        cancellable = NetworkManager.callAPI(urlString: URLStringConstants.User.login, httpMethod: "POST", uploadData: uploadData)
-            .receive(on: RunLoop.main)
-            .catch { _ in Just(LoginNetworkModel(message: CustomString.networkErrorString, error: nil)) }
-            .sink(receiveCompletion: { _ in
+        Auth.auth().signIn(withEmail: email, password: password) { (authRes, error) in
+            if error != nil {
+                if let errorMessage = error?.localizedDescription {
+                    completion(errorMessage)
+                }
                 self.inActivity = false
-            }, receiveValue: { response in
-                var loginResponse = LoginModel.LoginResponseData(message: response.message)
-                
-                if response.error != nil {
-                    loginResponse.message = response.error?.message
-                }
-                
-                if let token = response.idToken {
-                    do {
-                        try KeychainManager.setToken(email: email, tokenString: token)
-                        UserDefaults.standard.set(true, forKey: UserDefaultsConstants.isLoggedIn)
-                    } catch {
-                        loginResponse.message = "Failed to save access token"
-                    }
-                    guard let token = try? KeychainManager.getToken() else {
-                        return
-                    }
-                    
-                    print(token)
-                }
-                
-                completion(loginResponse)
-            })
+            }
+            guard let authRes = authRes else { return }
+            if !authRes.user.isEmailVerified {
+                completion("Please Verify your email address first")
+                self.inActivity = false
+            }
+            UserDefaults.standard.set(true, forKey: UserDefaultsConstants.isLoggedIn)
+            self.inActivity = false
+        }
         
-    }
-    struct LoginNetworkModel: Decodable {
-        
-        var message: String?
-        var idToken: String?
-        var localId: String?
-        let error: NetworkError?
-        
-    }
-    struct NetworkError: Decodable {
-        var code: Int?
-        var message: String?
     }
 }

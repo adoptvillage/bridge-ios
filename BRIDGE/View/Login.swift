@@ -84,19 +84,13 @@ struct Login : View {
             .padding(.top, 25)
             
             Button(action: {
-                self.loginViewModel.loginUser(email: self.email, password: self.password) { (response) in
-                    if var error = response.message {
-                        
-                        if error == "INVALID_PASSWORD" {
-                            error = "Password is not valid"
-                        }
-                        
+                self.loginViewModel.loginUser(email: self.email, password: self.password) { (errorMessage) in
+                    if errorMessage != "" {
                         self.showAlert = true
-                        self.alertMessage = error
-                        
+                        self.alertMessage = errorMessage
                     }
-                    print(response)
                 }
+                
             }) {
                 if self.loginViewModel.inActivity {
                     ActivityIndicator(isAnimating: self.$loginViewModel.inActivity)

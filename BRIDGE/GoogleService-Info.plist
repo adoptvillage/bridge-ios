@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>376290583763-dut6mce2p71s350slceiebm4uf40ug10.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.376290583763-dut6mce2p71s350slceiebm4uf40ug10</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCl9-XLI98Xx1bG-dirZFsAyWRPe5F8Bxg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>376290583763</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>adoptvillage.bridge-ios</string>
+	<key>PROJECT_ID</key>
+	<string>bridge-3f39b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bridge-3f39b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:376290583763:ios:178bd28789d25f187c6026</string>
+	<key>DATABASE_URL</key>
+	<string>https://bridge-3f39b.firebaseio.com</string>
+</dict>
+</plist>

@@ -6,6 +6,7 @@
 
 import Foundation
 import Combine
+import FirebaseAuth
 
 class ProfileViewModel: ObservableObject {
     
@@ -14,34 +15,28 @@ class ProfileViewModel: ObservableObject {
     
     
     func getProfile(completion: @escaping (ProfileModel.ProfileData) -> Void) {
-        //get auth token
-        guard let token = try? KeychainManager.getToken() else {
-            return
-        }
-        print(token)
         
-        //parallel request for profile and home
-        cancellable = NetworkManager.callAPI(urlString: URLStringConstants.User.profile, token: token)
-            .receive(on: RunLoop.main)
-            .catch { _ in Just(self.profileData) }
-            .sink { profile in
-                completion(profile)
-            }
+        FirebaseManager.getToken { (token) in
+            self.cancellable = NetworkManager.callAPI(urlString: URLStringConstants.User.profile, token: token)
+                .receive(on: RunLoop.main)
+                .catch { _ in Just(self.profileData) }
+                .sink { profile in
+                    completion(profile)
+                }
+        }
+        
     }
     
     func logout() {
         //delete keychain item
+        let firebaseAuth = Auth.auth()
         do {
-            try KeychainManager.deleteToken()
-        } catch {
-            fatalError()
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
-        //go to login screen
         UserDefaults.standard.set(false, forKey: UserDefaultsConstants.isLoggedIn)
     }
     
-    struct ProfileNetworkResponse: Decodable {
-        var profile: ProfileModel.ProfileData?
-        let message: String?
-    }
+    
 }
