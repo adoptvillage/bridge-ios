@@ -25,6 +25,7 @@
 		8357C57A251F969A00B4A15A /* locationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357C579251F969A00B4A15A /* locationModel.swift */; };
 		8357C57D251F9D5D00B4A15A /* LocationSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357C57C251F9D5D00B4A15A /* LocationSelector.swift */; };
 		8357C580251F9F4000B4A15A /* LocationSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357C57F251F9F4000B4A15A /* LocationSelectorViewModel.swift */; };
+		8362255625273661005A8387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8362255525273661005A8387 /* LaunchScreen.storyboard */; };
 		839676C3250B5E4500D488EF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676C2250B5E4500D488EF /* LoginViewModel.swift */; };
 		839676C5250B63C400D488EF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676C4250B63C400D488EF /* Strings.swift */; };
 		839676C8250B6A1600D488EF /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676C7250B6A1600D488EF /* KeychainManager.swift */; };
@@ -41,7 +42,6 @@
 		E132AF1E24F926C800D1B8C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132AF1D24F926C800D1B8C3 /* ContentView.swift */; };
 		E132AF2024F926CA00D1B8C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E132AF1F24F926CA00D1B8C3 /* Assets.xcassets */; };
 		E132AF2324F926CA00D1B8C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E132AF2224F926CA00D1B8C3 /* Preview Assets.xcassets */; };
-		E132AF2624F926CA00D1B8C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E132AF2424F926CA00D1B8C3 /* LaunchScreen.storyboard */; };
 		E176ADAE24F9756B00D0C545 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADAD24F9756B00D0C545 /* Main.swift */; };
 		E176ADB024F975E600D0C545 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADAF24F975E600D0C545 /* Login.swift */; };
 		E176ADB224F9763A00D0C545 /* SignUP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADB124F9763A00D0C545 /* SignUP.swift */; };
@@ -69,6 +69,7 @@
 		8357C579251F969A00B4A15A /* locationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationModel.swift; sourceTree = "<group>"; };
 		8357C57C251F9D5D00B4A15A /* LocationSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelector.swift; sourceTree = "<group>"; };
 		8357C57F251F9F4000B4A15A /* LocationSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectorViewModel.swift; sourceTree = "<group>"; };
+		8362255525273661005A8387 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		839676C2250B5E4500D488EF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		839676C4250B63C400D488EF /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		839676C7250B6A1600D488EF /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -86,7 +87,6 @@
 		E132AF1D24F926C800D1B8C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E132AF1F24F926CA00D1B8C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E132AF2224F926CA00D1B8C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E132AF2524F926CA00D1B8C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E132AF2724F926CA00D1B8C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E176ADAD24F9756B00D0C545 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		E176ADAF24F975E600D0C545 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -243,8 +243,8 @@
 				E132AF1D24F926C800D1B8C3 /* ContentView.swift */,
 				E176ADAD24F9756B00D0C545 /* Main.swift */,
 				E132AF1F24F926CA00D1B8C3 /* Assets.xcassets */,
-				E132AF2424F926CA00D1B8C3 /* LaunchScreen.storyboard */,
 				E132AF2724F926CA00D1B8C3 /* Info.plist */,
+				8362255525273661005A8387 /* LaunchScreen.storyboard */,
 				83E883DA25264DAF00F4A97B /* GoogleService-Info.plist */,
 				E132AF2124F926CA00D1B8C3 /* Preview Content */,
 			);
@@ -327,10 +327,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E132AF2624F926CA00D1B8C3 /* LaunchScreen.storyboard in Resources */,
 				8357C547251F27B500B4A15A /* location.json in Resources */,
 				83FC034F251FC925009960C1 /* punjabVillages.json in Resources */,
 				E132AF2324F926CA00D1B8C3 /* Preview Assets.xcassets in Resources */,
+				8362255625273661005A8387 /* LaunchScreen.storyboard in Resources */,
 				E132AF2024F926CA00D1B8C3 /* Assets.xcassets in Resources */,
 				83E883DB25264DB000F4A97B /* GoogleService-Info.plist in Resources */,
 			);
@@ -421,17 +421,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E132AF2424F926CA00D1B8C3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E132AF2524F926CA00D1B8C3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E132AF2824F926CA00D1B8C3 /* Debug */ = {
