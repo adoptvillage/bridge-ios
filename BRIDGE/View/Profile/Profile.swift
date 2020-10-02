@@ -16,7 +16,12 @@ struct Profile: View {
     @State private var occupation: String = ""
     @State private var role: String = ""
     
+    @State private var isProfileEditing: Bool = false
+    @State var showAlert = false
+    @State var alertMessage = ""
+    
     func fetchProfile() {
+        
         profileViewModel.getProfile { (profile)  in
             self.name = profile.name ?? ""
             self.email = profile.email ?? ""
@@ -24,7 +29,6 @@ struct Profile: View {
             self.address = profile.address ?? ""
             self.location = profile.location ?? ""
             self.occupation = profile.occupation ?? ""
-            
             
         }
     }
@@ -44,8 +48,6 @@ struct Profile: View {
                             
                         }
                         
-                            
-                            
                         HStack{
                             Text("Name").foregroundColor(Color.secondary)
                                 .frame(width: 120)
@@ -53,6 +55,7 @@ struct Profile: View {
                             Spacer()
                             
                             TextField("", text: $name)
+                                .disabled(!self.isProfileEditing)
                         }
                         
                         HStack{
@@ -61,7 +64,8 @@ struct Profile: View {
                             Divider()
                             Spacer()
                             TextField("", text: $email)
-                        }
+                                .disabled(true)
+                        }.foregroundColor(self.isProfileEditing ? Color(.systemGray) : Color.primary)
                         
                         HStack{
                             Text("Address").foregroundColor(Color.secondary)
@@ -69,6 +73,7 @@ struct Profile: View {
                             Divider()
                             Spacer()
                             TextField("", text: $address)
+                                .disabled(!self.isProfileEditing)
                         }
                         
                         HStack{
@@ -77,6 +82,7 @@ struct Profile: View {
                             Divider()
                             Spacer()
                             TextField("", text: $location)
+                                .disabled(!self.isProfileEditing)
                         }
                         
                         HStack{
@@ -85,7 +91,8 @@ struct Profile: View {
                             Divider()
                             Spacer()
                             TextField("", text: $role)
-                        }
+                                .disabled(true)
+                        }.foregroundColor(self.isProfileEditing ? Color(.systemGray) : Color.primary)
                         
                         HStack{
                             Text("Occupation").foregroundColor(Color.secondary)
@@ -93,19 +100,23 @@ struct Profile: View {
                             Divider()
                             Spacer()
                             TextField("", text: $occupation)
+                                .disabled(!self.isProfileEditing)
                         }
                         
                     }.padding(.vertical, 8)
                     
-                    Button(action: {
-                        self.profileViewModel.logout()
-                    }) {
-                        Text("Logout")
-                            .foregroundColor(Color(.systemIndigo))
-                            .fontWeight(.heavy)
-                            .padding(.vertical)
-                        
+                    if !self.isProfileEditing {
+                        Button(action: {
+                            self.profileViewModel.logout()
+                        }) {
+                            Text("Logout")
+                                .foregroundColor(Color(.systemIndigo))
+                                .fontWeight(.heavy)
+                                .padding(.vertical)
+                            
+                        }
                     }
+                    
                     
                     
                     
@@ -115,7 +126,24 @@ struct Profile: View {
                 
             }
             .navigationBarTitle("Profile")
-            .navigationBarItems(trailing: EditButton())
+            .navigationBarItems(leading: Button(self.isProfileEditing ? "Cancel" : "") {
+                self.isProfileEditing = false
+            },
+                
+                trailing: Button(self.isProfileEditing ? "Done" : "Edit") {
+                if self.isProfileEditing {
+                    profileViewModel.updateProfile(profileUpdateData: ProfileModel.ProfileUpdateData(name: name, address: address, location: location, occupation: occupation)) { (responseMessage) in
+                        self.alertMessage = responseMessage
+                        self.showAlert.toggle()
+                    }
+                    print("profile edited")
+                }
+                self.isProfileEditing.toggle()
+//                self.showProfileEditor.toggle()
+            }).alert(isPresented: self.$showAlert) {
+                Alert(title: Text(self.alertMessage))
+            }
+            
         }.onAppear {
             self.fetchProfile()
         }

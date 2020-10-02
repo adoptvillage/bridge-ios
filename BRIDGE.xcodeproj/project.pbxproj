@@ -115,16 +115,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		830E14142526777600E7FA88 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8308478225109B68009CDE27 /* Profile.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		833B7BB4250A3E3700EDF77E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				830E14142526777600E7FA88 /* Profile */,
 				834979C72521CFA50060C1ED /* ApplicationView */,
 				E176ADB124F9763A00D0C545 /* SignUP.swift */,
 				E176ADAF24F975E600D0C545 /* Login.swift */,
 				839676CE250B6F4500D488EF /* TabBar.swift */,
 				839676D2250B6F8F00D488EF /* Home.swift */,
 				E1D82009250FA9AE00630620 /* CircleImage.swift */,
-				8308478225109B68009CDE27 /* Profile.swift */,
 				8357C57C251F9D5D00B4A15A /* LocationSelector.swift */,
 			);
 			path = View;
