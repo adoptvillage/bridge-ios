@@ -33,5 +33,16 @@ final class ProfileModel {
             case isModerator = "is_moderator"
         }
     }
+    
+    struct ProfileUpdateData: Codable {
+        var name: String
+        var address: String
+        var location: String
+        var occupation: String
+    }
+    
+    struct NetworkResponse: Codable {
+        var message: String!
+    }
 
 }
