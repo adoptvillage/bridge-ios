@@ -17,7 +17,7 @@ struct main : View{
         VStack{
             
             if self.index==0{
-                Image("logo1")
+                Image("screenLogo")
                 .resizable()
                 .frame(width: 130, height: 130)
                     .padding(.bottom, 20)
