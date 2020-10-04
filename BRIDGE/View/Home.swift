@@ -8,6 +8,7 @@ import SwiftUI
 
 struct Home: View {
     @State var showLocationSelector = false
+    @State var index = 0
     var body: some View {
         NavigationView {
             GeometryReader{ geometry in
@@ -15,98 +16,32 @@ struct Home: View {
                 ScrollView{
                     
                     VStack{
-                        HStack(spacing:15){
-                            
-                            VStack(alignment: .leading, spacing: 12) {
-                                
-                                Text("Application No. 123")
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 21))
-                                    .foregroundColor(Color(.systemIndigo))
-                                    .padding(.top)
-                                    .padding(.bottom, 5)
-                                HStack(spacing : 10){
+                        
+                        if #available(iOS 14.0, *) {
+                            TabView(selection: self.$index){
+                               
                                     
-                                    VStack(alignment: .leading, spacing: 10){
-                                        HStack(spacing: 10){
-                                            Text("Donor")
-                                                .frame(width: 120)
-                                            Divider()
-                                            
-                                            Text("Abhi")
-                                                .foregroundColor(Color(.systemIndigo))
-                                                .padding(.leading, 50)
-                                        }
-                                        Divider()
-                                        
-                                        HStack(spacing: 10){
-                                            Text("Recipient")
-                                                .frame(width: 120)
-                                            Divider()
-                                            Text("Vatsal")
-                                                .foregroundColor(Color(.systemIndigo))
-                                                .padding(.leading, 50)
-                                        }
-                                        Divider()
-                                        
-                                        HStack(spacing: 10){
-                                            Text("Amount")
-                                                .frame(width: 120)
-                                            Divider()
-                                            Text("$400")
-                                                .foregroundColor(Color(.systemIndigo))
-                                                .padding(.leading, 50)
-                                        }
-                                        HStack{
-                                            VStack{
-                                                Capsule()
-                                                    .fill(Color.green)
-                                                    .frame(width: UIScreen.main.bounds.width/4, height: 5)
-                                                
-                                                Text("Submitted")
-//                                                    .fontWeight(.thin)
-                                                    .font(.system(size: 12))
-                                                    .frame(width: UIScreen.main.bounds.width/4, height: 20)
-                                                
-                                                
-                                            }
-                                            VStack{
-                                                Capsule()
-                                                    .fill(Color.green)
-                                                    .frame(width: UIScreen.main.bounds.width/4, height: 5)
-                                                
-                                                Text("Being Reviewed")
-//                                                    .fontWeight(.thin)
-                                                    .font(.system(size: 12))
-                                                    .frame(width: UIScreen.main.bounds.width/4, height: 20)
-                                            }
-                                            VStack{
-                                                Capsule()
-                                                    .fill(Color.gray)
-                                                    .frame(width: UIScreen.main.bounds.width/4, height: 5)
-                                                
-                                                Text("Completed")
-//                                                    .fontWeight(.thin)
-                                                    .font(.system(size: 12))
-                                                    .frame(width: UIScreen.main.bounds.width/4, height: 20)
-                                            }
-                                            
-                                        }.frame(alignment: .center)
-                                        .padding(.vertical)
-                                        
+                                    ForEach(1..<5){ i in
+                                        CardView()
                                     }
+                                    
+                                    
+                                    
+                               
+                            }.frame(height : UIScreen.main.bounds.height/3)
+                            .tabViewStyle(PageTabViewStyle())
+                            .animation(.easeOut)
+                        } else {
+                            // Fallback on earlier versions
+                            ScrollView(.horizontal, showsIndicators: false){
+                            HStack(spacing:20){
+                                ForEach(1..<5){ i in
+                                    CardView()
                                 }
-                            }
-                            .padding(.all)
-                            .frame(width: UIScreen.main.bounds.width - 40)
-                            .frame(height : UIScreen.main.bounds.height / 3.2)
-                            .background(Color(.secondarySystemBackground))
-                            .cornerRadius(20)
-                            
-                            
-                            
-                            
-                        }.padding(.bottom)
+                            }.padding(.bottom)
+                        }
+
+                        }
                         HStack(){
                             VStack{
                                 Text("Succesfull Applications")
@@ -179,7 +114,7 @@ struct Home: View {
                         
                         
                     }.padding(.all)
-                    .padding(.trailing, 25)
+                    .padding(.trailing, 5)
                     .navigationBarTitle("Welcome!")
                     .sheet(isPresented: $showLocationSelector) {
                         LocationSelector( isPresented: $showLocationSelector)
