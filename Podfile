@@ -7,5 +7,6 @@ target 'BRIDGE' do
 
   # Pods for BRIDGE
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
 
 end

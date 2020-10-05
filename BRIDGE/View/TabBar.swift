@@ -22,12 +22,12 @@ struct TabBar: View {
                     }
             }.tag(0)
             
-            Application()
+            History()
                 .tabItem {
                     VStack {
-                        Image(systemName: "list.dash")
+                        Image(systemName: "clock.fill")
                             .imageScale(.large)
-                        Text("Applications")
+                        Text("History")
                     }
             }.tag(1)
             

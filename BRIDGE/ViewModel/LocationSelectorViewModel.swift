@@ -102,6 +102,10 @@ class LocationSelectorViewModel: ObservableObject {
         
     }
     
+    func getSelectedState() -> String{
+        return stateNames[selectedState]
+    }
+    
     func updatePreferredRegion() {
         print(stateNames[selectedState])
         if selectedState == 26 {
