@@ -10,14 +10,43 @@ struct DocumentUploadForm: View {
     var applicationFormViewModel: SubmitApplicationViewModel!
     @State var showDocumentPicker = false
     @State var showAlert = false
-//    @Binding var isPresented: Bool
     var body: some View {
         Form {
             Section(header: Text("Upload Documents")) {
                 Button(action: {
                     self.showDocumentPicker.toggle()
                 }) {
-                    Text("Document")
+                    HStack {
+                        Text("Offer Letter")
+                            .foregroundColor(Color(.label))
+                        Spacer()
+                        Image(systemName: "paperclip")
+                            .foregroundColor(Color(.systemIndigo))
+                    }
+                    
+                }
+                Button(action: {
+                    self.showDocumentPicker.toggle()
+                }) {
+                    HStack {
+                        Text("Fee Structure")
+                            .foregroundColor(Color(.label))
+                        Spacer()
+                        Image(systemName: "paperclip")
+                            .foregroundColor(Color(.systemIndigo))
+                        
+                    }.foregroundColor(Color(.systemIndigo))
+                }
+                Button(action: {
+                    self.showDocumentPicker.toggle()
+                }) {
+                    HStack {
+                        Text("Bank Statement")
+                            .foregroundColor(Color(.label))
+                        Spacer()
+                        Image(systemName: "paperclip")
+                            .foregroundColor(Color(.systemIndigo))
+                    }
                 }
             }
             Section {
