@@ -8,13 +8,11 @@ import SwiftUI
 
 struct Application: View {
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(0 ..< 10) {_ in 
-                    ApplicationListCell()
-                }
-            }.navigationBarTitle(Text("Applications"))
-        }
+        List {
+            ForEach(0 ..< 10) {_ in
+                ApplicationListCell()
+            }
+        }.navigationBarTitle(Text("Application"))
     }
 }
 

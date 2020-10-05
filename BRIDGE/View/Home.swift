@@ -8,6 +8,7 @@ import SwiftUI
 
 struct Home: View {
     @State var showLocationSelector = false
+    @State var showApplicationSubmitView = false
     @State var index = 0
     var body: some View {
         NavigationView {
@@ -79,21 +80,20 @@ struct Home: View {
                         
                         HStack(){
                             
-                            Button(action: {
-                                
-                            }) {
-                                
-                                Text("History")
+                            
+                            NavigationLink(destination: Application()) {
+                                Text("Donate")
                                     .font(.system(size: 17))
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
-                                
                             }.padding()
                             .frame(width: UIScreen.main.bounds.width/2.5)
                             .frame(height : UIScreen.main.bounds.height / 15)
                             .background(Color(.systemIndigo))
                             .cornerRadius(10)
                             .padding(.trailing, 10)
+                            
+                            
                             
                             Button(action: {
                                 showLocationSelector.toggle()
@@ -112,13 +112,26 @@ struct Home: View {
                             .cornerRadius(10)
                         }
                         
+                        NavigationLink(destination: PersonalInfoForm()) {
+                            Text("Submit")
+                                .font(.system(size: 17))
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                        }.padding()
+                        .frame(width: UIScreen.main.bounds.width/2.5)
+                        .frame(height : UIScreen.main.bounds.height / 15)
+                        .background(Color(.systemIndigo))
+                        .cornerRadius(10)
+                        .padding(.trailing, 10)
+                        
                         
                     }.padding(.all)
                     .padding(.trailing, 5)
-                    .navigationBarTitle("Welcome!")
+                    .navigationBarTitle("Dashboard")
                     .sheet(isPresented: $showLocationSelector) {
                         LocationSelector( isPresented: $showLocationSelector)
                     }
+                    
                 }
             }
             
