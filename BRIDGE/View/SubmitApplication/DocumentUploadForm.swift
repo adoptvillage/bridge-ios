@@ -10,7 +10,6 @@ struct DocumentUploadForm: View {
     @Binding var shouldPopToRootView : Bool
     var applicationFormViewModel: SubmitApplicationViewModel!
     @ObservedObject var documentUploadViewModel = DocumentUploadViewModel()
-    @State var showProgressBar = false
     @State var showDocumentPicker = false
     @State var addedAllFiles = false
     @State var selectedButton = 0
@@ -65,26 +64,19 @@ struct DocumentUploadForm: View {
             Section(footer: Text("Please select different files for each document. File size must be less than 5MB")) {
             }
             Section {
-                VStack {
-                    if #available(iOS 14.0, *) {
-                        if showProgressBar {
-                            let progressStatus = documentUploadViewModel.doneUpload ? "Done" : "Uploading..."
-                            ProgressView(progressStatus, value: documentUploadViewModel.progress, total: 300)
-                        }
-                    } else {
-                        // Fallback on earlier versions
-                    }
+                HStack {
                     Button(action: {
-                        //                    print(uploadedItemsUrls)
-                        showProgressBar = true
                         documentUploadViewModel.getDocumentDetails(uploadedItemsUrls: uploadedItemsUrls)
                     }) {
-                        Text("Upload")
-                    }.disabled(documentUploadViewModel.doneUpload || documentUploadViewModel.progress > 1 || !addedAllFiles)
+                        Text(documentUploadViewModel.doneUpload ? "Uploaded" : "Upload")
+                    }.disabled(documentUploadViewModel.doneUpload || documentUploadViewModel.inActivity || !addedAllFiles)
+                    Spacer()
+                    ActivityIndicator(isAnimating: $documentUploadViewModel.inActivity)
+
                 }
                 
                 
-            }.foregroundColor(documentUploadViewModel.doneUpload || documentUploadViewModel.progress > 1 ? Color(.systemGray) : !addedAllFiles ? Color(.systemGray) : Color(.systemIndigo))
+            }.foregroundColor(documentUploadViewModel.doneUpload || documentUploadViewModel.inActivity ? Color(.systemGray) : !addedAllFiles ? Color(.systemGray) : Color(.systemIndigo))
             .alert(isPresented: $documentUploadViewModel.showAlert) {
             Alert(title: Text("Alert!"), message: Text(documentUploadViewModel.alertMessage), dismissButton: .default(Text("OK")))
         }

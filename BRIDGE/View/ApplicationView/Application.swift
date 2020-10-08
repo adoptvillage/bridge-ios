@@ -9,7 +9,7 @@ import SwiftUI
 struct Application: View {
     var body: some View {
         List {
-            ForEach(0 ..< 10) {_ in
+            ForEach(0 ..< 4) {_ in
                 ApplicationListCell()
             }
         }.navigationBarTitle(Text("Application"))
