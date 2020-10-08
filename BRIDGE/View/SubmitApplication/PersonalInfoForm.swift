@@ -7,6 +7,8 @@
 import SwiftUI
 
 struct PersonalInfoForm: View {
+    @Binding var rootIsActive : Bool
+
     @ObservedObject var locationSelectorViewModel = LocationSelectorViewModel()
     @ObservedObject var applicationFormViewModel = SubmitApplicationViewModel()
     @State var goToDocumentUpload = false
@@ -35,6 +37,7 @@ struct PersonalInfoForm: View {
                 }
                 
                 if locationSelectorViewModel.selectedState == 26 {
+                    
                     Picker(selection: $locationSelectorViewModel.selectedDistrict, label: Text("District")) {
                         ForEach(0 ..< locationSelectorViewModel.districtNamesCount) { index in
                             Text(locationSelectorViewModel.districtNames[index])
@@ -79,28 +82,20 @@ struct PersonalInfoForm: View {
             }
             
             Section {
-                
-                Button(action: {
+                NavigationLink(destination: DocumentUploadForm(shouldPopToRootView: self.$rootIsActive, applicationFormViewModel: applicationFormViewModel).onAppear(perform: {
                     applicationFormViewModel.setLocation(locationViewModel: locationSelectorViewModel, isVillageSelected: locationSelectorViewModel.selectedState != 26 ? false : true)
-                    goToDocumentUpload = true
-                }) {
-                    NavigationLink(destination: DocumentUploadForm(applicationFormViewModel: applicationFormViewModel), isActive: $goToDocumentUpload) {
-                        Text("Next")
-                    }
+                }), isActive: $goToDocumentUpload) {
+                   Text("Next")
+                    
+                    
                 }
-//                NavigationLink(destination: DocumentUploadForm(applicationFormViewModel: applicationFormViewModel)) {
-//                    Text("Next")
-//                }
+                .isDetailLink(false)
 
-            }.foregroundColor(Color(.systemIndigo))
+                }.foregroundColor(Color(.systemIndigo))
             
         }.navigationBarTitle(Text("Application Form"))
+        
         
     }
 }
 
-struct SubmitApplication_Previews: PreviewProvider {
-    static var previews: some View {
-        PersonalInfoForm()
-    }
-}

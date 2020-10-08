@@ -8,7 +8,7 @@ import Foundation
 
 final class SubmitApplicationModel {
     
-    struct SubmitData {
+    struct SubmitData: Codable {
         var firstName: String!
         var lastName: String!
         var contactNumber: String!
@@ -46,6 +46,10 @@ final class SubmitApplicationModel {
             case bankStatement = "bank_statement"
             
         }
+    }
+    
+    struct NetworkResponse: Codable {
+        var message: String!
     }
     
 }

@@ -12,15 +12,18 @@ import FirebaseAuth
 
 struct DocumentPicker: UIViewControllerRepresentable {
     
+    
     func makeCoordinator() -> Coordinator {
         return DocumentPicker.Coordinator(parent1: self)
     }
     
-    @Binding var alert: Bool
+    @Binding var uploadItemUrls: [URL]
+    @Binding var selectedButton: Int
+    @Binding var addedAllFiles: Bool
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<DocumentPicker>) -> UIDocumentPickerViewController {
         
-        let picker = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .open)
+        let picker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeJPEG), String(kUTTypePDF)], in: .open)
         picker.allowsMultipleSelection = false
         picker.delegate = context.coordinator
         return picker
@@ -34,65 +37,42 @@ struct DocumentPicker: UIViewControllerRepresentable {
     class Coordinator: NSObject, UIDocumentPickerDelegate {
         
         var parent: DocumentPicker
+        private var documentUploadViewModel = DocumentUploadViewModel()
         
         init(parent1: DocumentPicker) {
             parent = parent1
         }
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-            print(urls)
-            let storageRef = Storage.storage().reference()
-
-//            let uploadTask = bucket.child((urls.first?.deletingPathExtension().lastPathComponent)!).putFile(from: urls.first!, metadata: nil) { (metadata, error) in
-//                guard let metadata = metadata else {
-//                // Uh-oh, an error occurred!
-//                    print(error?.localizedDescription)
-//                return
-//              }
-//              // Metadata contains file metadata such as size, content-type.
-//              let size = metadata.size
-//              // You can also access to download URL after upload.
-//                bucket.downloadURL { (url, error) in
-//                guard let downloadURL = url else {
-//                  // Uh-oh, an error occurred!
-//                  return
-//                }
-//                    print(downloadURL)
-//              }
-//            }
-            let localFile = urls.first!
-            let fileName = urls.first!.deletingPathExtension().lastPathComponent
-            let user = Auth.auth().currentUser
-            if let userId = user?.uid {
-                let path = userId + "/docs/" + fileName
-                let reference = storageRef.child(path)
-
-                // Upload the file to the path "images/rivers.jpg"
-                let uploadTask = reference.putFile(from: localFile, metadata: nil) { metadata, error in
-                  guard let metadata = metadata else {
-                    // Uh-oh, an error occurred!
-                    print(error?.localizedDescription)
-                    return
-                  }
-                  // Metadata contains file metadata such as size, content-type.
-                  let size = metadata.size
-                    if size > 5000000 {
-                        print("FileSize is big")
-                    }
-                  // You can also access to download URL after upload.
-                    reference.downloadURL { (url, error) in
-                    guard let downloadURL = url else {
-                      // Uh-oh, an error occurred!
-                      return
-                    }
-                  }
+            if self.parent.uploadItemUrls.count == 3 {
+                if self.parent.selectedButton == 1 {
+                    self.parent.uploadItemUrls[0] = urls.first!
                 }
+                if self.parent.selectedButton == 2 {
+                    self.parent.uploadItemUrls[1] = urls.first!
+                    
+                }
+                if self.parent.selectedButton == 3 {
+                    self.parent.uploadItemUrls[2] = urls.first!
+                    self.parent.selectedButton = -1
+                }
+            }else {
+                if !self.parent.uploadItemUrls.contains(urls.first!) {
+                    self.parent.uploadItemUrls.append(urls.first!)
+                }
+                
             }
-            
-            
-            // Create a reference to the file you want to upload
-            
-            
+            if self.parent.uploadItemUrls.count == 3 {
+                self.parent.addedAllFiles = true
+            }
         }
+        
+        func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+            self.parent.selectedButton = self.parent.selectedButton == 1 ? 0 : self.parent.selectedButton == 2 ? 1 : self.parent.selectedButton == 3 ? 2 : 0
+        }
+        
+        
+        
     }
 }
+
