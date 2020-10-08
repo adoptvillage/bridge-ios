@@ -46,7 +46,7 @@ class SubmitApplicationViewModel: ObservableObject {
                     if NetworkManager.responseCode == 201 {
                         completion("Application submitted")
                     }
-                    print(response.message)
+                    print(response.message ?? "")
                     completion(response.message)
                 }
         }

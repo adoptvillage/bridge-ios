@@ -43,7 +43,7 @@ class DocumentUploadViewModel: ObservableObject {
                 print(type(of: reference))
                 
                 // Upload the file to the path "images/rivers.jpg"
-                let uploadTask = reference.putFile(from: localFile, metadata: nil) { metadata, error in
+                _ = reference.putFile(from: localFile, metadata: nil) { metadata, error in
                     // You can also access to download URL after upload.
                     if error != nil {
                         completion(nil, error?.localizedDescription)
@@ -72,7 +72,7 @@ class DocumentUploadViewModel: ObservableObject {
                     
                     guard let downloadURL = url else {
                         // Uh-oh, an error occurred!
-                        print(error?.localizedDescription)
+                        print(error?.localizedDescription ?? "")
                         return
                     }
                     print(downloadURL)
