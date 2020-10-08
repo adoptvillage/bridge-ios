@@ -10,12 +10,11 @@ import FirebaseAuth
 import FirebaseStorage
 
 class DocumentUploadViewModel: ObservableObject {
-    @Published var progress: Double = 0
     @Published var doneUpload: Bool = false
-    @Published var fileUrls: [String] = []
     @Published var docModel = DocumentFile(offerLetter: "", feeStructure: "", bankStatement: "")
     @Published var alertMessage = ""
     @Published var showAlert = false
+    @Published var inActivity = false
     
     func uplooadDoc(documentsUrl: [URL], completion: @escaping (StorageReference?, String?) -> Void) {
         if documentsUrl.count < 3 {
@@ -52,14 +51,6 @@ class DocumentUploadViewModel: ObservableObject {
                     completion(reference, nil)
                 }
                 
-                uploadTask.observe(.progress) { snapshot in
-                    if self.progress <= 300 {
-                        let percentComplete = Int64(100.0) * (snapshot.progress!.completedUnitCount) / (snapshot.progress!.totalUnitCount)
-                        self.progress += Double(percentComplete)
-                    }
-                    
-                }
-                
             }
 
             
@@ -69,10 +60,10 @@ class DocumentUploadViewModel: ObservableObject {
     }
     
     func getDocumentDetails(uploadedItemsUrls: [URL]) {
+        inActivity = true
         uplooadDoc(documentsUrl: uploadedItemsUrls) { (reference, error) in
             if error != nil {
                 self.alertMessage = error ?? ""
-                self.progress = 0
                 self.doneUpload = false
                 self.showAlert.toggle()
             }
@@ -94,6 +85,8 @@ class DocumentUploadViewModel: ObservableObject {
                     }
                 }
                 self.doneUpload = true
+                self.inActivity = false
+
             }
             
             

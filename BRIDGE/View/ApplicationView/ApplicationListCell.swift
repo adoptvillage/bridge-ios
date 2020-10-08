@@ -8,22 +8,32 @@ import SwiftUI
 
 struct ApplicationListCell: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            //Name
-            Text("Name")
-                .font(.headline)
+        HStack {
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Vatsal Kulshreshtha")
+                    .font(.headline)
+                    .foregroundColor(Color(.systemIndigo))
 
-            Group {
-                //Availability: mentor and/or mentee
-                Text("Amount")
+                Group {
+                    Text("Jaipur, Rajasthan")
+                    Text("Chandigarh University")
+                }
+                .font(.subheadline)
+                .foregroundColor(Color.secondary)
+            }.padding(.leading, 5)
+            Spacer()
+            
+            VStack(alignment: .trailing, spacing: 0) {
+                Text("$300")
 
-                //Skills
-                Text("area")
+            }.padding(.trailing, 5)
+            .foregroundColor(Color(.systemIndigo))
+            
+
+        }.padding(.top, 5)
+        .padding(.bottom, 5)
+        
             }
-            .font(.subheadline)
-            .foregroundColor(Color.secondary)
-        }
-    }
 }
 
 struct ApplicationListCell_Previews: PreviewProvider {
