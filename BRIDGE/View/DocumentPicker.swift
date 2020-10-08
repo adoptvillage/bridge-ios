@@ -12,7 +12,7 @@ import FirebaseAuth
 
 struct DocumentPicker: UIViewControllerRepresentable {
     
-    
+
     func makeCoordinator() -> Coordinator {
         return DocumentPicker.Coordinator(parent1: self)
     }
@@ -24,6 +24,7 @@ struct DocumentPicker: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<DocumentPicker>) -> UIDocumentPickerViewController {
         
         let picker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeJPEG), String(kUTTypePDF)], in: .open)
+
         picker.allowsMultipleSelection = false
         picker.delegate = context.coordinator
         return picker
@@ -38,6 +39,7 @@ struct DocumentPicker: UIViewControllerRepresentable {
         
         var parent: DocumentPicker
         private var documentUploadViewModel = DocumentUploadViewModel()
+
         
         init(parent1: DocumentPicker) {
             parent = parent1
@@ -75,4 +77,3 @@ struct DocumentPicker: UIViewControllerRepresentable {
         
     }
 }
-

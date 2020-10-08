@@ -7,6 +7,7 @@
 import Foundation
 import Combine
 
+
 class SubmitApplicationViewModel: ObservableObject {
     var applicationData = SubmitApplicationModel.SubmitData(firstName: "",
                                                                   lastName: "", contactNumber: "", aadhaarNumber: "",

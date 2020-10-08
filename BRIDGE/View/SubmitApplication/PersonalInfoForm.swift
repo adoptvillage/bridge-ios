@@ -37,7 +37,6 @@ struct PersonalInfoForm: View {
                 }
                 
                 if locationSelectorViewModel.selectedState == 26 {
-                    
                     Picker(selection: $locationSelectorViewModel.selectedDistrict, label: Text("District")) {
                         ForEach(0 ..< locationSelectorViewModel.districtNamesCount) { index in
                             Text(locationSelectorViewModel.districtNames[index])
@@ -98,4 +97,5 @@ struct PersonalInfoForm: View {
         
     }
 }
+
 

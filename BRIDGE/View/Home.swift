@@ -114,6 +114,7 @@ struct Home: View {
                         }
                         
                         NavigationLink(destination: PersonalInfoForm(rootIsActive: self.$isActive), isActive: self.$isActive) {
+
                             Text("Submit")
                                 .font(.system(size: 17))
                                 .fontWeight(.bold)
@@ -121,6 +122,7 @@ struct Home: View {
                         }                    .isDetailLink(false)
 
                         .padding()
+
                         .frame(width: UIScreen.main.bounds.width/2.5)
                         .frame(height : UIScreen.main.bounds.height / 15)
                         .background(Color(.systemIndigo))

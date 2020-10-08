@@ -17,6 +17,7 @@ struct DocumentUploadForm: View {
     @State var uploadedItemsUrls:[URL] = []
     @State var showAlert = false
     @State var alertMessage = ""
+
     var body: some View {
         Form {
             Section(header: Text("Upload Documents")) {
@@ -27,6 +28,7 @@ struct DocumentUploadForm: View {
                     HStack {
                         Text("Offer Letter")
                             .foregroundColor(selectedButton == 2 ? Color(.systemGray) : Color(.label))
+
                         Spacer()
                         Image(systemName: "paperclip")
                             .foregroundColor(Color(.systemIndigo))
@@ -40,6 +42,7 @@ struct DocumentUploadForm: View {
                     HStack {
                         Text("Fee Structure")
                             .foregroundColor(selectedButton == 1 || addedAllFiles ? Color(.label) : Color(.systemGray))
+
                         Spacer()
                         Image(systemName: "paperclip")
                             .foregroundColor(Color(.systemIndigo))

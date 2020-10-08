@@ -172,6 +172,7 @@
 				8357C579251F969A00B4A15A /* locationModel.swift */,
 				83FBB64A252B03860086C3D1 /* SubmitApplicationModel.swift */,
 				83A8084A252DCAD400CF0EC6 /* DocumentFile.swift */,
+
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,6 +427,7 @@
 				834FCEE32529F624007E5404 /* History.swift in Sources */,
 				834979C52521CF790060C1ED /* Application.swift in Sources */,
 				E132AF1A24F926C800D1B8C3 /* AppDelegate.swift in Sources */,
+				83FBB643252AFE7E0086C3D1 /* InstitutionDetailsForm.swift in Sources */,
 				8357C573251F2E3300B4A15A /* LocatinDataService.swift in Sources */,
 				83FBB64E252B05FF0086C3D1 /* SubmitApplicationViewModel.swift in Sources */,
 				8308E3E9252CDEA700471D2E /* DocumentUploadViewModel.swift in Sources */,

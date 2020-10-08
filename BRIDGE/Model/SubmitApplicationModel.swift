@@ -9,6 +9,7 @@ import Foundation
 final class SubmitApplicationModel {
     
     struct SubmitData: Codable {
+
         var firstName: String!
         var lastName: String!
         var contactNumber: String!
