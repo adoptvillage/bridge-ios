@@ -5,6 +5,8 @@
 //
 
 import Foundation
+import Combine
+
 
 class SubmitApplicationViewModel: ObservableObject {
     var applicationData = SubmitApplicationModel.SubmitData(firstName: "",
@@ -14,6 +16,10 @@ class SubmitApplicationViewModel: ObservableObject {
                                                                   instituteDistrict: "", instituteAffiliationCode: "",
                                                                   courseName: "", yearOrSemester: "", amount: "",
                                                                   offerLetter: "", feeStructure: "", bankStatement: "")
+    var submitApplicationResponseData = SubmitApplicationModel.NetworkResponse(message: "")
+    private var cancellable: AnyCancellable?
+    @Published var messageTitle = ""
+
     
     func setLocation(locationViewModel: LocationSelectorViewModel, isVillageSelected: Bool) {
         
@@ -22,6 +28,27 @@ class SubmitApplicationViewModel: ObservableObject {
         if isVillageSelected {
             applicationData.subDistrict = locationViewModel.subDistrictNames[locationViewModel.selectedSubDistrict]
             applicationData.area = locationViewModel.areaNames[locationViewModel.selectedArea]
+        }
+        
+    }
+    
+    func submitApplication(completion: @escaping (String) -> Void) {
+        
+        guard let uploadData = try? JSONEncoder().encode(applicationData) else {
+            return
+        }
+        
+        FirebaseManager.getToken { (token) in
+            self.cancellable = NetworkManager.callAPI(urlString: URLStringConstants.Application.submit, httpMethod: "POST", uploadData: uploadData, token: token)
+                .receive(on: RunLoop.main)
+                .catch { _ in Just(self.submitApplicationResponseData) }
+                .sink { response in
+                    if NetworkManager.responseCode == 201 {
+                        completion("Application submitted")
+                    }
+                    print(response.message)
+                    completion(response.message)
+                }
         }
         
     }

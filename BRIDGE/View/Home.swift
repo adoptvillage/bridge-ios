@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct Home: View {
+    @State var isActive : Bool = false
     @State var showLocationSelector = false
     @State var showApplicationSubmitView = false
     @State var index = 0
@@ -112,12 +113,16 @@ struct Home: View {
                             .cornerRadius(10)
                         }
                         
-                        NavigationLink(destination: PersonalInfoForm()) {
+                        NavigationLink(destination: PersonalInfoForm(rootIsActive: self.$isActive), isActive: self.$isActive) {
+
                             Text("Submit")
                                 .font(.system(size: 17))
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
-                        }.padding()
+                        }                    .isDetailLink(false)
+
+                        .padding()
+
                         .frame(width: UIScreen.main.bounds.width/2.5)
                         .frame(height : UIScreen.main.bounds.height / 15)
                         .background(Color(.systemIndigo))
