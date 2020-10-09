@@ -13,8 +13,20 @@ struct PersonalInfoForm: View {
     @ObservedObject var applicationFormViewModel = SubmitApplicationViewModel()
     @State var goToDocumentUpload = false
     @State var showInstituteForm = false
+    @State private var selectedtype: Int = 0
+    
+    private var validated: Bool {
+        !applicationFormViewModel.applicationData.firstName.isEmpty && !applicationFormViewModel.applicationData.lastName.isEmpty && !applicationFormViewModel.applicationData.contactNumber.isEmpty && applicationFormViewModel.applicationData.aadhaarNumber.isEmpty && !applicationFormViewModel.applicationData.instituteName.isEmpty && !applicationFormViewModel.applicationData.instituteState.isEmpty && !applicationFormViewModel.applicationData.instituteDistrict.isEmpty && !applicationFormViewModel.applicationData.instituteAffiliationCode.isEmpty && !applicationFormViewModel.applicationData.yearOrSemester.isEmpty && !applicationFormViewModel.applicationData.courseName.isEmpty && !applicationFormViewModel.applicationData.amount.isEmpty
+        }
     
     var body: some View {
+        VStack{
+                Picker(selection: self.$selectedtype, label: Text("")) {
+                    Text("University").tag(0)
+                    Text("School").tag(1)
+                    
+            }.pickerStyle(SegmentedPickerStyle())
+                .frame(width: UIScreen.main.bounds.width-40)
         Form {
             Section(header: Text("Personal Details")) {
                 
@@ -24,10 +36,12 @@ struct PersonalInfoForm: View {
                     .padding(10)
                 TextField("Contact No.", text: $applicationFormViewModel.applicationData.contactNumber)
                     .padding(10)
+                    .keyboardType(.numberPad)
                 TextField("Adhaar No.", text: $applicationFormViewModel.applicationData.aadhaarNumber)
                     .padding(10)
+                    .keyboardType(.numberPad)
                 
-            }
+            }.resignKeyboardOnDragGesture()
             Section {
                 
                 Picker(selection: $locationSelectorViewModel.selectedState, label: Text("State")) {
@@ -71,6 +85,7 @@ struct PersonalInfoForm: View {
                 TextField("Affiliation Code", text: $applicationFormViewModel.applicationData.instituteAffiliationCode)
                     .padding(10)
             }
+            if selectedtype == 0{
             Section(header: Text("Course")) {
                 TextField("Year or Semester", text: $applicationFormViewModel.applicationData.yearOrSemester)
                     .padding(10)
@@ -78,13 +93,30 @@ struct PersonalInfoForm: View {
                     .padding(10)
                 TextField("Amount in Rupees", text: $applicationFormViewModel.applicationData.amount)
                     .padding(10)
+                    .keyboardType(.numberPad)
+            }.resignKeyboardOnDragGesture()
+            }
+            else{
+                Section(header: Text("Course")) {
+                    TextField("Class", text: $applicationFormViewModel.applicationData.yearOrSemester)
+                        .padding(10)
+                    TextField("Section/Stream", text: $applicationFormViewModel.applicationData.courseName)
+                        .padding(10)
+                    TextField("Amount in Rupees", text: $applicationFormViewModel.applicationData.amount)
+                        .padding(10)
+                        .keyboardType(.numberPad)
+                }.resignKeyboardOnDragGesture()
             }
             
             Section {
+               
                 NavigationLink(destination: DocumentUploadForm(shouldPopToRootView: self.$rootIsActive, applicationFormViewModel: applicationFormViewModel).onAppear(perform: {
                     applicationFormViewModel.setLocation(locationViewModel: locationSelectorViewModel, isVillageSelected: locationSelectorViewModel.selectedState != 26 ? false : true)
                 }), isActive: $goToDocumentUpload) {
+                    if !validated{
                    Text("Next")
+                    
+                    }
                     
                     
                 }
@@ -94,8 +126,34 @@ struct PersonalInfoForm: View {
             
         }.navigationBarTitle(Text("Application Form"))
         
-        
+        }
     }
 }
+
+extension UIApplication {
+    func endEditing(_ force: Bool) {
+        self.windows
+            .filter{$0.isKeyWindow}
+            .first?
+            .endEditing(force)
+    }
+}
+
+struct ResignKeyboardOnDragGesture: ViewModifier {
+    var gesture = DragGesture().onChanged{_ in
+        UIApplication.shared.endEditing(true)
+    }
+    func body(content: Content) -> some View {
+        content.gesture(gesture)
+    }
+}
+
+extension View {
+    func resignKeyboardOnDragGesture() -> some View {
+        return modifier(ResignKeyboardOnDragGesture())
+    }
+}
+
+
 
 
