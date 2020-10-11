@@ -56,7 +56,7 @@ struct ApplicationDetailView: View {
                     }
                     Spacer()
                 }
-            }
+            }.padding(5)
             Section(footer: Text("Please add/invite a moderator in order to accept the application")) {
                 TextField("Moderator email", text: $moderator)
                     .autocapitalization(.none)
