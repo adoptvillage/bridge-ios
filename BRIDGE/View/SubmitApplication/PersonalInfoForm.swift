@@ -109,18 +109,18 @@ struct PersonalInfoForm: View {
             }
             
             Section {
-               
+                if validated{
                 NavigationLink(destination: DocumentUploadForm(shouldPopToRootView: self.$rootIsActive, applicationFormViewModel: applicationFormViewModel).onAppear(perform: {
                     applicationFormViewModel.setLocation(locationViewModel: locationSelectorViewModel, isVillageSelected: locationSelectorViewModel.selectedState != 26 ? false : true)
                 }), isActive: $goToDocumentUpload) {
-                    if !validated{
+                    
                    Text("Next")
                     
-                    }
+                    }.isDetailLink(false)
                     
                     
                 }
-                .isDetailLink(false)
+                
 
                 }.foregroundColor(Color(.systemIndigo))
             
