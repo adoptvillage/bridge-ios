@@ -175,7 +175,7 @@ struct SignUP : View {
                 Picker(selection: self.$selectedRole, label: Text("")) {
                     Text("DONOR").tag(0)
                     Text("RECIPIENT").tag(1)
-                    Text("UNIVERSITY").tag(2)
+                    Text("MODERATOR").tag(2)
                 }
                 .labelsHidden()
                 .pickerStyle(SegmentedPickerStyle())
