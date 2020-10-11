@@ -9,30 +9,39 @@ import Combine
 
 
 class SubmitApplicationViewModel: ObservableObject {
-    var applicationData = SubmitApplicationModel.SubmitData(firstName: "",
+    @Published var applicationData = SubmitApplicationModel.SubmitData(firstName: "",
                                                                   lastName: "", contactNumber: "", aadhaarNumber: "",
                                                                   state: "", district: "", subDistrict: "",
                                                                   area: "", instituteName: "", instituteState: "",
                                                                   instituteDistrict: "", instituteAffiliationCode: "",
                                                                   courseName: "", yearOrSemester: "", amount: "",
-                                                                  offerLetter: "", feeStructure: "", bankStatement: "")
+                                                                  offerLetter: "", feeStructure: "", bankStatement: "", instituteType: 0)
     var submitApplicationResponseData = SubmitApplicationModel.NetworkResponse(message: "")
     private var cancellable: AnyCancellable?
     @Published var messageTitle = ""
+    @Published var inActivity = false
 
     
-    func setLocation(locationViewModel: LocationSelectorViewModel, isVillageSelected: Bool) {
-        
-        applicationData.state = locationViewModel.stateNames[locationViewModel.selectedState]
-        applicationData.district = locationViewModel.districtNames[locationViewModel.selectedDistrict]
+    func setLocation(applicationData: SubmitApplicationModel.SubmitData, locationViewModel: LocationSelectorViewModel, isVillageSelected: Bool) {
+        self.applicationData = applicationData
+        self.applicationData.state = locationViewModel.stateNames[locationViewModel.selectedState]
+        self.applicationData.district = locationViewModel.districtNames[locationViewModel.selectedDistrict]
         if isVillageSelected {
-            applicationData.subDistrict = locationViewModel.subDistrictNames[locationViewModel.selectedSubDistrict]
-            applicationData.area = locationViewModel.areaNames[locationViewModel.selectedArea]
+            self.applicationData.subDistrict = locationViewModel.subDistrictNames[locationViewModel.selectedSubDistrict]
+            self.applicationData.area = locationViewModel.areaNames[locationViewModel.selectedArea]
         }
         
     }
     
+    func setDocuments(documentsModel: DocumentFile)  {
+        self.applicationData.offerLetter = documentsModel.offerLetter
+        self.applicationData.feeStructure = documentsModel.feeStructure
+        self.applicationData.bankStatement = documentsModel.bankStatement
+        
+    }
+    
     func submitApplication(completion: @escaping (String) -> Void) {
+        inActivity = true
         
         guard let uploadData = try? JSONEncoder().encode(applicationData) else {
             return
@@ -47,6 +56,7 @@ class SubmitApplicationViewModel: ObservableObject {
                         completion("Application submitted")
                     }
                     print(response.message ?? "")
+                    self.inActivity = false
                     completion(response.message)
                 }
         }

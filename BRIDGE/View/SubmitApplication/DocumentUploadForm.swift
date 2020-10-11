@@ -8,7 +8,7 @@ import SwiftUI
 
 struct DocumentUploadForm: View {
     @Binding var shouldPopToRootView : Bool
-    var applicationFormViewModel: SubmitApplicationViewModel!
+    @ObservedObject var applicationFormViewModel = SubmitApplicationViewModel()
     @ObservedObject var documentUploadViewModel = DocumentUploadViewModel()
     @State var showDocumentPicker = false
     @State var addedAllFiles = false
@@ -72,6 +72,8 @@ struct DocumentUploadForm: View {
                     }.disabled(documentUploadViewModel.doneUpload || documentUploadViewModel.inActivity || !addedAllFiles)
                     Spacer()
                     ActivityIndicator(isAnimating: $documentUploadViewModel.inActivity)
+                        .foregroundColor(Color(.red))
+                        .frame(width: 20, height: 20)
 
                 }
                 
@@ -83,18 +85,16 @@ struct DocumentUploadForm: View {
             
             Section {
                 Button(action: {
-                    applicationFormViewModel.applicationData.offerLetter = documentUploadViewModel.docModel.offerLetter
-                    applicationFormViewModel.applicationData.feeStructure = documentUploadViewModel.docModel.feeStructure
-                    applicationFormViewModel.applicationData.bankStatement = documentUploadViewModel.docModel.bankStatement
+                    applicationFormViewModel.setDocuments(documentsModel: documentUploadViewModel.docModel)
                     applicationFormViewModel.submitApplication { (message) in
                         alertMessage = message
                         showAlert.toggle()
-                       
                     }
                 }) {
-                    Text("Submit")
+                    Text(applicationFormViewModel.inActivity ? "Submitting" : "Submit")
                         .foregroundColor(!documentUploadViewModel.doneUpload ? Color(.systemGray) : Color(.systemIndigo))
                 }.disabled(!documentUploadViewModel.doneUpload)
+                
                 
             }.alert(isPresented: $showAlert) {
                 Alert(title: Text(alertMessage), dismissButton: .default(Text("OK")) {
