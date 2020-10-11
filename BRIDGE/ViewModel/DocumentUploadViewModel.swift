@@ -16,7 +16,7 @@ class DocumentUploadViewModel: ObservableObject {
     @Published var showAlert = false
     @Published var inActivity = false
     
-    func uplooadDoc(documentsUrl: [URL], completion: @escaping (StorageReference?, String?) -> Void) {
+    private func uplooadDoc(documentsUrl: [URL], completion: @escaping (StorageReference?, String?) -> Void) {
         if documentsUrl.count < 3 {
             completion(nil, "Please select all mentioned documents")
             return
@@ -40,7 +40,6 @@ class DocumentUploadViewModel: ObservableObject {
 //                let fileName = url.deletingPathExtension().lastPathComponent
                 let path = userId + "/docs/" + fileName
                 let reference = storageRef.child(path)
-                print(type(of: reference))
                 
                 // Upload the file to the path "images/rivers.jpg"
                 _ = reference.putFile(from: localFile, metadata: nil) { metadata, error in

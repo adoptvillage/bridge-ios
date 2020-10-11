@@ -28,6 +28,7 @@ final class SubmitApplicationModel {
         var offerLetter: String!
         var feeStructure: String!
         var bankStatement: String!
+        var instituteType: Int!
         
         enum CodingKeys: String, CodingKey {
             case state, district, area, amount
@@ -38,6 +39,7 @@ final class SubmitApplicationModel {
             case subDistrict = "sub_district"
             case instituteName = "institute_name"
             case instituteState = "institute_state"
+            case instituteType = "institute_type"
             case instituteDistrict = "institute_district"
             case instituteAffiliationCode = "institution_affiliation_code"
             case courseName = "course_name"
