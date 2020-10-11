@@ -19,6 +19,10 @@ struct PersonalInfoForm: View {
         !applicationFormViewModel.applicationData.firstName.isEmpty && !applicationFormViewModel.applicationData.lastName.isEmpty && !applicationFormViewModel.applicationData.contactNumber.isEmpty && applicationFormViewModel.applicationData.aadhaarNumber.isEmpty && !applicationFormViewModel.applicationData.instituteName.isEmpty && !applicationFormViewModel.applicationData.instituteState.isEmpty && !applicationFormViewModel.applicationData.instituteDistrict.isEmpty && !applicationFormViewModel.applicationData.instituteAffiliationCode.isEmpty && !applicationFormViewModel.applicationData.yearOrSemester.isEmpty && !applicationFormViewModel.applicationData.courseName.isEmpty && !applicationFormViewModel.applicationData.amount.isEmpty
         }
     
+    private var validated: Bool {
+        !applicationFormViewModel.applicationData.firstName.isEmpty && !applicationFormViewModel.applicationData.lastName.isEmpty && !applicationFormViewModel.applicationData.contactNumber.isEmpty && applicationFormViewModel.applicationData.aadhaarNumber.isEmpty && !applicationFormViewModel.applicationData.instituteName.isEmpty && !applicationFormViewModel.applicationData.instituteState.isEmpty && !applicationFormViewModel.applicationData.instituteDistrict.isEmpty && !applicationFormViewModel.applicationData.instituteAffiliationCode.isEmpty && !applicationFormViewModel.applicationData.yearOrSemester.isEmpty && !applicationFormViewModel.applicationData.courseName.isEmpty && !applicationFormViewModel.applicationData.amount.isEmpty
+        }
+    
     var body: some View {
         VStack{
                 Picker(selection: self.$selectedtype, label: Text("")) {
@@ -139,6 +143,16 @@ extension UIApplication {
     }
 }
 
+
+extension UIApplication {
+    func endEditing(_ force: Bool) {
+        self.windows
+            .filter{$0.isKeyWindow}
+            .first?
+            .endEditing(force)
+    }
+}
+
 struct ResignKeyboardOnDragGesture: ViewModifier {
     var gesture = DragGesture().onChanged{_ in
         UIApplication.shared.endEditing(true)
@@ -153,7 +167,4 @@ extension View {
         return modifier(ResignKeyboardOnDragGesture())
     }
 }
-
-
-
 
