@@ -8,36 +8,47 @@ import SwiftUI
 
 struct PersonalInfoForm: View {
     @Binding var rootIsActive : Bool
-
+    @State var applicationData = SubmitApplicationModel.SubmitData(firstName: "", lastName: "", contactNumber: "", aadhaarNumber: "", state: "", district: "", subDistrict: "", area: "", instituteName: "", instituteState: "", instituteDistrict: "", instituteAffiliationCode: "", courseName: "", yearOrSemester: "", amount: "", offerLetter: "", feeStructure: "", bankStatement: "", instituteType: 0)
     @ObservedObject var locationSelectorViewModel = LocationSelectorViewModel()
     @ObservedObject var applicationFormViewModel = SubmitApplicationViewModel()
     @State var goToDocumentUpload = false
     @State var showInstituteForm = false
     @State private var selectedtype: Int = 0
     
-    private var validated: Bool {
-        !applicationFormViewModel.applicationData.firstName.isEmpty && !applicationFormViewModel.applicationData.lastName.isEmpty && !applicationFormViewModel.applicationData.contactNumber.isEmpty && applicationFormViewModel.applicationData.aadhaarNumber.isEmpty && !applicationFormViewModel.applicationData.instituteName.isEmpty && !applicationFormViewModel.applicationData.instituteState.isEmpty && !applicationFormViewModel.applicationData.instituteDistrict.isEmpty && !applicationFormViewModel.applicationData.instituteAffiliationCode.isEmpty && !applicationFormViewModel.applicationData.yearOrSemester.isEmpty && !applicationFormViewModel.applicationData.courseName.isEmpty && !applicationFormViewModel.applicationData.amount.isEmpty
+    private var disableForm: Bool {
+        if !applicationData.firstName.isEmpty && !applicationData.lastName.isEmpty &&
+            !applicationData.contactNumber.isEmpty && !applicationData.aadhaarNumber.isEmpty &&
+            !applicationData.instituteName.isEmpty && !applicationData.instituteState.isEmpty &&
+            !applicationData.instituteDistrict.isEmpty && !applicationData.instituteAffiliationCode.isEmpty &&
+            !applicationData.yearOrSemester.isEmpty && !applicationData.courseName.isEmpty && !applicationData.amount.isEmpty {
+            return false
         }
+        return true
+        }
+    
     
     var body: some View {
         VStack{
+        Form {
+            Section(header: Text("Institute Type")) {
                 Picker(selection: self.$selectedtype, label: Text("")) {
-                    Text("University").tag(0)
-                    Text("School").tag(1)
+                    Text("School").tag(0)
+                    Text("University").tag(1)
                     
             }.pickerStyle(SegmentedPickerStyle())
-                .frame(width: UIScreen.main.bounds.width-40)
-        Form {
+            }
+            
             Section(header: Text("Personal Details")) {
                 
-                TextField("First Name", text: $applicationFormViewModel.applicationData.firstName)
+                TextField("First Name", text: $applicationData.firstName)
                     .padding(10)
-                TextField("Last Name", text: $applicationFormViewModel.applicationData.lastName)
+                    
+                TextField("Last Name", text: $applicationData.lastName)
                     .padding(10)
-                TextField("Contact No.", text: $applicationFormViewModel.applicationData.contactNumber)
+                TextField("Contact No.", text: $applicationData.contactNumber)
                     .padding(10)
-                    .keyboardType(.numberPad)
-                TextField("Adhaar No.", text: $applicationFormViewModel.applicationData.aadhaarNumber)
+                    .keyboardType(.numberPad)       
+                TextField("Adhaar No.", text: $applicationData.aadhaarNumber)
                     .padding(10)
                     .keyboardType(.numberPad)
                 
@@ -76,53 +87,39 @@ struct PersonalInfoForm: View {
             }
             
             Section(header: Text("Institute Details")) {
-                TextField("Institute Name", text: $applicationFormViewModel.applicationData.instituteName)
+                TextField("Institute Name", text: $applicationData.instituteName)
                     .padding(10)
-                TextField("State", text: $applicationFormViewModel.applicationData.instituteState)
+                TextField("State", text: $applicationData.instituteState)
                     .padding(10)
-                TextField("District", text: $applicationFormViewModel.applicationData.instituteDistrict)
+                TextField("District", text: $applicationData.instituteDistrict)
                     .padding(10)
-                TextField("Affiliation Code", text: $applicationFormViewModel.applicationData.instituteAffiliationCode)
+                TextField("Affiliation Code", text: $applicationData.instituteAffiliationCode)
                     .padding(10)
             }
-            if selectedtype == 0{
             Section(header: Text("Course")) {
-                TextField("Year or Semester", text: $applicationFormViewModel.applicationData.yearOrSemester)
+                TextField(selectedtype == 0 ? "Class" : "Year or Semester", text: $applicationData.yearOrSemester)
                     .padding(10)
-                TextField("Course Name", text: $applicationFormViewModel.applicationData.courseName)
+                TextField(selectedtype == 0 ? "Section/Stream" :"Course Name", text: $applicationData.courseName)
                     .padding(10)
-                TextField("Amount in Rupees", text: $applicationFormViewModel.applicationData.amount)
+                TextField("Amount in Rupees", text: $applicationData.amount)
                     .padding(10)
                     .keyboardType(.numberPad)
-            }.resignKeyboardOnDragGesture()
-            }
-            else{
-                Section(header: Text("Course")) {
-                    TextField("Class", text: $applicationFormViewModel.applicationData.yearOrSemester)
-                        .padding(10)
-                    TextField("Section/Stream", text: $applicationFormViewModel.applicationData.courseName)
-                        .padding(10)
-                    TextField("Amount in Rupees", text: $applicationFormViewModel.applicationData.amount)
-                        .padding(10)
-                        .keyboardType(.numberPad)
-                }.resignKeyboardOnDragGesture()
             }
             
+            
             Section {
-                if validated{
                 NavigationLink(destination: DocumentUploadForm(shouldPopToRootView: self.$rootIsActive, applicationFormViewModel: applicationFormViewModel).onAppear(perform: {
-                    applicationFormViewModel.setLocation(locationViewModel: locationSelectorViewModel, isVillageSelected: locationSelectorViewModel.selectedState != 26 ? false : true)
+                    applicationFormViewModel.setLocation(applicationData: applicationData, locationViewModel: locationSelectorViewModel, isVillageSelected: locationSelectorViewModel.selectedState != 26 ? false : true)
+                    applicationFormViewModel.applicationData.instituteType = selectedtype
                 }), isActive: $goToDocumentUpload) {
-                    
-                   Text("Next")
-                    
-                    }.isDetailLink(false)
-                    
+
+                    Text("Next")
                     
                 }
                 
 
-                }.foregroundColor(Color(.systemIndigo))
+            }.foregroundColor(disableForm ? Color(.systemGray) : Color(.systemIndigo))
+            .disabled(disableForm)
             
         }.navigationBarTitle(Text("Application Form"))
         
@@ -131,29 +128,8 @@ struct PersonalInfoForm: View {
 }
 
 extension UIApplication {
-    func endEditing(_ force: Bool) {
-        self.windows
-            .filter{$0.isKeyWindow}
-            .first?
-            .endEditing(force)
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
-
-struct ResignKeyboardOnDragGesture: ViewModifier {
-    var gesture = DragGesture().onChanged{_ in
-        UIApplication.shared.endEditing(true)
-    }
-    func body(content: Content) -> some View {
-        content.gesture(gesture)
-    }
-}
-
-extension View {
-    func resignKeyboardOnDragGesture() -> some View {
-        return modifier(ResignKeyboardOnDragGesture())
-    }
-}
-
-
-
 

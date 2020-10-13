@@ -7,10 +7,25 @@
 import SwiftUI
 
 struct Application: View {
+    @ObservedObject var applicationViewModel = ApplicationViewModel()
+    func fetchApplication() {
+        applicationViewModel.fetchApplications { (applications) in
+            applicationViewModel.applicationsList = applications
+        }
+    }
     var body: some View {
         List {
-            ForEach(0 ..< 4) {_ in
-                ApplicationListCell()
+            ForEach(self.applicationViewModel.applicationsList) { application in
+                NavigationLink(destination: ApplicationDetailView(applicationDetail: application, applicationViewModel: applicationViewModel)) {
+                    ApplicationListCell(application: application, membersViewModel: applicationViewModel)
+                }
+            }
+            
+            if self.applicationViewModel.applicationsList.count == 0 {
+                ActivityIndicator(isAnimating: .constant(true))
+                .onAppear {
+                    self.fetchApplication()
+                }
             }
         }.navigationBarTitle(Text("Application"))
     }
