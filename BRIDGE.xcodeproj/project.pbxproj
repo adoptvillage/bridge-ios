@@ -59,6 +59,8 @@
 		E176ADAE24F9756B00D0C545 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADAD24F9756B00D0C545 /* Main.swift */; };
 		E176ADB024F975E600D0C545 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADAF24F975E600D0C545 /* Login.swift */; };
 		E176ADB224F9763A00D0C545 /* SignUP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADB124F9763A00D0C545 /* SignUP.swift */; };
+		E1C9F50E2530BE9A0072F322 /* CardView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9F50D2530BE9A0072F322 /* CardView1.swift */; };
+		E1C9F5112530D1270072F322 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9F5102530D1270072F322 /* SearchBar.swift */; };
 		E1D8200A250FA9AE00630620 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D82009250FA9AE00630620 /* CircleImage.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +121,8 @@
 		E176ADAD24F9756B00D0C545 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		E176ADAF24F975E600D0C545 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		E176ADB124F9763A00D0C545 /* SignUP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUP.swift; sourceTree = "<group>"; };
+		E1C9F50D2530BE9A0072F322 /* CardView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView1.swift; sourceTree = "<group>"; };
+		E1C9F5102530D1270072F322 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E1D82009250FA9AE00630620 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,7 +163,9 @@
 				834979C72521CFA50060C1ED /* ApplicationView */,
 				E176ADB124F9763A00D0C545 /* SignUP.swift */,
 				E176ADAF24F975E600D0C545 /* Login.swift */,
+				E1C9F5102530D1270072F322 /* SearchBar.swift */,
 				E10EF0E82527428A009EDABB /* CardView.swift */,
+				E1C9F50D2530BE9A0072F322 /* CardView1.swift */,
 				839676CE250B6F4500D488EF /* TabBar.swift */,
 				839676D2250B6F8F00D488EF /* Home.swift */,
 				E1D82009250FA9AE00630620 /* CircleImage.swift */,
@@ -444,6 +450,8 @@
 				833B7BB8250A5F0500EDF77E /* LoginModel.swift in Sources */,
 				833B7BBF250A615F00EDF77E /* NetworkManager.swift in Sources */,
 				8308478325109B68009CDE27 /* Profile.swift in Sources */,
+				E1C9F5112530D1270072F322 /* SearchBar.swift in Sources */,
+				E1C9F50E2530BE9A0072F322 /* CardView1.swift in Sources */,
 				8307C77F2521D2160076BD40 /* ApplicationListCell.swift in Sources */,
 				83885F242532CF28002D462D /* UIApplication+Ext.swift in Sources */,
 				839676D5250B710C00D488EF /* ProfileViewModel.swift in Sources */,

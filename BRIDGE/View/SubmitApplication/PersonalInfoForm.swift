@@ -29,7 +29,6 @@ struct PersonalInfoForm: View {
     
     var body: some View {
         VStack{
-                
         Form {
             Section(header: Text("Institute Type")) {
                 Picker(selection: self.$selectedtype, label: Text("")) {
@@ -48,13 +47,12 @@ struct PersonalInfoForm: View {
                     .padding(10)
                 TextField("Contact No.", text: $applicationData.contactNumber)
                     .padding(10)
-                    .keyboardType(.numberPad)
-                
+                    .keyboardType(.numberPad)       
                 TextField("Adhaar No.", text: $applicationData.aadhaarNumber)
                     .padding(10)
                     .keyboardType(.numberPad)
                 
-            }
+            }.resignKeyboardOnDragGesture()
             Section {
                 
                 Picker(selection: $locationSelectorViewModel.selectedState, label: Text("State")) {
@@ -98,7 +96,6 @@ struct PersonalInfoForm: View {
                 TextField("Affiliation Code", text: $applicationData.instituteAffiliationCode)
                     .padding(10)
             }
-            
             Section(header: Text("Course")) {
                 TextField(selectedtype == 0 ? "Class" : "Year or Semester", text: $applicationData.yearOrSemester)
                     .padding(10)
@@ -111,15 +108,15 @@ struct PersonalInfoForm: View {
             
             
             Section {
-               
                 NavigationLink(destination: DocumentUploadForm(shouldPopToRootView: self.$rootIsActive, applicationFormViewModel: applicationFormViewModel).onAppear(perform: {
                     applicationFormViewModel.setLocation(applicationData: applicationData, locationViewModel: locationSelectorViewModel, isVillageSelected: locationSelectorViewModel.selectedState != 26 ? false : true)
                     applicationFormViewModel.applicationData.instituteType = selectedtype
                 }), isActive: $goToDocumentUpload) {
+
                     Text("Next")
                     
                 }
-                .isDetailLink(false)
+                
 
             }.foregroundColor(disableForm ? Color(.systemGray) : Color(.systemIndigo))
             .disabled(disableForm)

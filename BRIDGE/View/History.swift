@@ -7,12 +7,23 @@
 import SwiftUI
 
 struct History: View {
+    @State var txt = ""
     var body: some View {
+        NavigationView{
         VStack {
-            Text("User History")
-            Image(systemName: "clock.fill")
-        }
+            HStack{
+                VStack{
+                    ScrollView{
+                        ForEach(0 ..< 7) {_ in
+                            CardView1()
+                                .padding(.bottom, 5)
+                        }
+                    }
+                }
+            }
+        }.navigationBarTitle("History")
         
+    }
     }
 }
 
