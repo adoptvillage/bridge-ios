@@ -39,6 +39,7 @@
 		839676CF250B6F4500D488EF /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676CE250B6F4500D488EF /* TabBar.swift */; };
 		839676D3250B6F8F00D488EF /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676D2250B6F8F00D488EF /* Home.swift */; };
 		839676D5250B710C00D488EF /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676D4250B710C00D488EF /* ProfileViewModel.swift */; };
+		839E4AF325354D0700AA56A0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839E4AF225354D0700AA56A0 /* StoreKit.framework */; };
 		83A8084B252DCAD400CF0EC6 /* DocumentFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A8084A252DCAD400CF0EC6 /* DocumentFile.swift */; };
 		83B1B765253399B300D51A16 /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1B764253399B300D51A16 /* ApplicationViewModel.swift */; };
 		83B1B768253399F700D51A16 /* ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1B767253399F700D51A16 /* ApplicationModel.swift */; };
@@ -99,6 +100,7 @@
 		839676CE250B6F4500D488EF /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		839676D2250B6F8F00D488EF /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		839676D4250B710C00D488EF /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		839E4AF225354D0700AA56A0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		83A8084A252DCAD400CF0EC6 /* DocumentFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFile.swift; sourceTree = "<group>"; };
 		83B1B764253399B300D51A16 /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
 		83B1B767253399F700D51A16 /* ApplicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModel.swift; sourceTree = "<group>"; };
@@ -111,7 +113,7 @@
 		83FBB650252B1A8D0086C3D1 /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 		83FC034E251FC925009960C1 /* punjabVillages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = punjabVillages.json; sourceTree = "<group>"; };
 		E10EF0E82527428A009EDABB /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		E132AF1624F926C800D1B8C3 /* BRIDGE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BRIDGE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E132AF1624F926C800D1B8C3 /* Bridge - Adopt Your Village.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bridge - Adopt Your Village.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132AF1924F926C800D1B8C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E132AF1B24F926C800D1B8C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E132AF1D24F926C800D1B8C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3323808CA93A0C5F488F6523 /* Pods_BRIDGE.framework in Frameworks */,
+				839E4AF325354D0700AA56A0 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +282,7 @@
 		E132AF1724F926C800D1B8C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E132AF1624F926C800D1B8C3 /* BRIDGE.app */,
+				E132AF1624F926C800D1B8C3 /* Bridge - Adopt Your Village.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 		FC502303C11688B9ABFA1509 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				839E4AF225354D0700AA56A0 /* StoreKit.framework */,
 				0BF7BEE6705F161643B48C7F /* Pods_BRIDGE.framework */,
 			);
 			name = Frameworks;
@@ -326,9 +330,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E132AF1524F926C800D1B8C3 /* BRIDGE */ = {
+		E132AF1524F926C800D1B8C3 /* Bridge - Adopt Your Village */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E132AF2A24F926CA00D1B8C3 /* Build configuration list for PBXNativeTarget "BRIDGE" */;
+			buildConfigurationList = E132AF2A24F926CA00D1B8C3 /* Build configuration list for PBXNativeTarget "Bridge - Adopt Your Village" */;
 			buildPhases = (
 				40C9375D41A77B15522396C2 /* [CP] Check Pods Manifest.lock */,
 				E132AF1224F926C800D1B8C3 /* Sources */,
@@ -340,9 +344,9 @@
 			);
 			dependencies = (
 			);
-			name = BRIDGE;
+			name = "Bridge - Adopt Your Village";
 			productName = BRIDGE;
-			productReference = E132AF1624F926C800D1B8C3 /* BRIDGE.app */;
+			productReference = E132AF1624F926C800D1B8C3 /* Bridge - Adopt Your Village.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -373,7 +377,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E132AF1524F926C800D1B8C3 /* BRIDGE */,
+				E132AF1524F926C800D1B8C3 /* Bridge - Adopt Your Village */,
 			);
 		};
 /* End PBXProject section */
@@ -665,7 +669,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E132AF2A24F926CA00D1B8C3 /* Build configuration list for PBXNativeTarget "BRIDGE" */ = {
+		E132AF2A24F926CA00D1B8C3 /* Build configuration list for PBXNativeTarget "Bridge - Adopt Your Village" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E132AF2B24F926CA00D1B8C3 /* Debug */,
