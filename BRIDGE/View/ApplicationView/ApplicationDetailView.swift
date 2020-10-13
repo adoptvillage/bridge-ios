@@ -7,13 +7,16 @@
 import SwiftUI
 
 struct ApplicationDetailView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var applicationDetail: ApplicationModel.ApplicationData
-    var applicationViewModel: ApplicationViewModel
+    @ObservedObject var applicationViewModel: ApplicationViewModel
     @State var moderator = ""
     @State var addedModerator = false
     //    @State var donatingAmountSelection = 0
     @State var partialAmount = ""
     @State var donatingfullAmount = false
+    @State var showAlert = false
+    @State var alertMessage = ""
     
     var validPartialAmount: Bool {
         if Int(partialAmount) ?? 0 > Int(applicationDetail.remainingAmount) {
@@ -87,10 +90,19 @@ struct ApplicationDetailView: View {
                 Button(action: {
                     let acceptData = ApplicationModel.AcceptData(applicationId: applicationDetail.id, donatingFullAmount: donatingfullAmount, amount: (donatingfullAmount ? Int(applicationDetail.remainingAmount) : Int(partialAmount)) ?? 0 , moderatorEmail: moderator)
                     print(acceptData)
-                    print("Accepted")
+                    applicationViewModel.acceptApplication(application: acceptData) { (response) in
+                        alertMessage = response.message
+                        showAlert.toggle()
+                    }
+
+                    
                 }) {
-                    Text("Accept Application")
-                        .foregroundColor(disabledAcceptButton ? Color(.systemGray) : Color(.systemIndigo))
+                    HStack {
+                        Text("Accept Application")
+                            .foregroundColor(disabledAcceptButton ? Color(.systemGray) : Color(.systemIndigo))
+                        Spacer()
+                        ActivityIndicator(isAnimating: $applicationViewModel.inActivity)
+                    }
                     
                 }
                 .disabled(disabledAcceptButton)
@@ -98,5 +110,10 @@ struct ApplicationDetailView: View {
         }
         
         .navigationBarTitle(Text("\(applicationDetail.firstName) \(applicationDetail.lastName)"))
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text(alertMessage), dismissButton: .default(Text("OK")) {
+                self.presentationMode.wrappedValue.dismiss()
+            })
+        }
     }
 }
