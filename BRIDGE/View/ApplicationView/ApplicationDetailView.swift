@@ -41,7 +41,7 @@ struct ApplicationDetailView: View {
                     Text("Amount needed").foregroundColor(Color.secondary)
                         .frame(width: 120)
                     Divider()
-                    Text("\(applicationDetail.remainingAmount)")
+                    Text("₹\(applicationDetail.remainingAmount)")
                     Spacer()
                 }
                 HStack(alignment: .center){
@@ -54,6 +54,13 @@ struct ApplicationDetailView: View {
                         Text("\(applicationDetail.state), \(applicationDetail.district), \(applicationDetail.subDistrict), \(applicationDetail.area)")
                             .multilineTextAlignment(.leading)
                     }
+                    Spacer()
+                }
+                HStack(alignment: .center){
+                    Text("Active donors").foregroundColor(Color.secondary)
+                        .frame(width: 120)
+                    Divider()
+                    Text("\(applicationDetail.numberOdActiveDonor)")
                     Spacer()
                 }
             }.padding(5)

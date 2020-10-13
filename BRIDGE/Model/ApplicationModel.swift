@@ -18,6 +18,7 @@ final class ApplicationModel {
         var area: String!
         var instituteName: String!
         var remainingAmount: Int!
+        var numberOdActiveDonor: Int!
         
         enum CodingKeys: String, CodingKey {
             case id, state, district, area
@@ -26,6 +27,7 @@ final class ApplicationModel {
             case subDistrict = "sub_district"
             case instituteName = "institute"
             case remainingAmount = "remaining_amount"
+            case numberOdActiveDonor = "no_of_donors"
             
         }
     }
