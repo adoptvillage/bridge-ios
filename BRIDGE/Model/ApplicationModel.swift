@@ -19,9 +19,10 @@ final class ApplicationModel {
         var instituteName: String!
         var remainingAmount: Int!
         var numberOdActiveDonor: Int!
+        var description: String!
         
         enum CodingKeys: String, CodingKey {
-            case id, state, district, area
+            case id, state, district, area, description
             case firstName = "applicant_first_name"
             case lastName = "applicant_last_name"
             case subDistrict = "sub_district"

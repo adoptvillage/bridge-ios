@@ -18,9 +18,9 @@ struct ApplicationListCell: View {
 
                 Group {
                     if application.subDistrict.isEmpty && application.area.isEmpty {
-                        Text("\(application.state), \(application.district)")
+                        Text("\(application.district), \(application.state)")
                     } else {
-                        Text("\(application.state), \(application.district), \(application.subDistrict), \(application.area)")
+                        Text("\(application.area), \(application.subDistrict), \(application.district), \(application.state)")
                             .multilineTextAlignment(.leading)
                     }
                     Text("\(application.instituteName)")
