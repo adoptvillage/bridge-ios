@@ -29,9 +29,10 @@ final class SubmitApplicationModel {
         var feeStructure: String!
         var bankStatement: String!
         var instituteType: Int!
+        var description: String!
         
         enum CodingKeys: String, CodingKey {
-            case state, district, area, amount
+            case state, district, area, amount, description
             case firstName = "applicant_first_name"
             case lastName = "applicant_last_name"
             case contactNumber = "contact_number"

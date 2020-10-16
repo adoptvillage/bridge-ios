@@ -15,7 +15,7 @@ class SubmitApplicationViewModel: ObservableObject {
                                                                   area: "", instituteName: "", instituteState: "",
                                                                   instituteDistrict: "", instituteAffiliationCode: "",
                                                                   courseName: "", yearOrSemester: "", amount: "",
-                                                                  offerLetter: "", feeStructure: "", bankStatement: "", instituteType: 0)
+                                                                  offerLetter: "", feeStructure: "", bankStatement: "", instituteType: 0, description: "")
     var submitApplicationResponseData = SubmitApplicationModel.NetworkResponse(message: "")
     private var cancellable: AnyCancellable?
     @Published var messageTitle = ""

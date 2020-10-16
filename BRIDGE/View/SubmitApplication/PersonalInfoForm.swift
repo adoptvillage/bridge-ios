@@ -8,7 +8,7 @@ import SwiftUI
 
 struct PersonalInfoForm: View {
     @Binding var rootIsActive : Bool
-    @State var applicationData = SubmitApplicationModel.SubmitData(firstName: "", lastName: "", contactNumber: "", aadhaarNumber: "", state: "", district: "", subDistrict: "", area: "", instituteName: "", instituteState: "", instituteDistrict: "", instituteAffiliationCode: "", courseName: "", yearOrSemester: "", amount: "", offerLetter: "", feeStructure: "", bankStatement: "", instituteType: 0)
+    @State var applicationData = SubmitApplicationModel.SubmitData(firstName: "", lastName: "", contactNumber: "", aadhaarNumber: "", state: "", district: "", subDistrict: "", area: "", instituteName: "", instituteState: "", instituteDistrict: "", instituteAffiliationCode: "", courseName: "", yearOrSemester: "", amount: "", offerLetter: "", feeStructure: "", bankStatement: "", instituteType: 0, description: "")
     @ObservedObject var locationSelectorViewModel = LocationSelectorViewModel()
     @ObservedObject var applicationFormViewModel = SubmitApplicationViewModel()
     @State var goToDocumentUpload = false
@@ -20,7 +20,7 @@ struct PersonalInfoForm: View {
             !applicationData.contactNumber.isEmpty && !applicationData.aadhaarNumber.isEmpty &&
             !applicationData.instituteName.isEmpty && !applicationData.instituteState.isEmpty &&
             !applicationData.instituteDistrict.isEmpty && !applicationData.instituteAffiliationCode.isEmpty &&
-            !applicationData.yearOrSemester.isEmpty && !applicationData.courseName.isEmpty && !applicationData.amount.isEmpty {
+            !applicationData.yearOrSemester.isEmpty && !applicationData.courseName.isEmpty && !applicationData.amount.isEmpty && !applicationData.description.isEmpty {
             return false
         }
         return true
@@ -96,6 +96,7 @@ struct PersonalInfoForm: View {
                 TextField("Affiliation Code", text: $applicationData.instituteAffiliationCode)
                     .padding(10)
             }
+            
             Section(header: Text("Course")) {
                 TextField(selectedtype == 0 ? "Class" : "Year or Semester", text: $applicationData.yearOrSemester)
                     .padding(10)
@@ -106,6 +107,23 @@ struct PersonalInfoForm: View {
                     .keyboardType(.numberPad)
             }
             
+            Section(header: Text("Why you need this money?"), footer: Text("Word limit is 200")) {
+                if #available(iOS 14.0, *) {
+                    ZStack(alignment: .leading) {
+                        if applicationData.description.isEmpty {
+                                Text("Notes")
+                                    .padding(10)
+                                    .foregroundColor(Color(.placeholderText))
+                            }
+                        TextEditor(text: $applicationData.description)
+                    }
+                    
+                } else {
+                    // Fallback on earlier versions
+                    TextField("Notes", text: $applicationData.description)
+                }
+                
+            }
             
             Section {
                 NavigationLink(destination: DocumentUploadForm(shouldPopToRootView: self.$rootIsActive, applicationFormViewModel: applicationFormViewModel).onAppear(perform: {

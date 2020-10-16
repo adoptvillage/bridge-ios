@@ -8,9 +8,11 @@ import SwiftUI
 
 struct Application: View {
     @ObservedObject var applicationViewModel = ApplicationViewModel()
+    @State var firstFetchCalled = false
     func fetchApplication() {
         applicationViewModel.fetchApplications { (applications) in
             applicationViewModel.applicationsList = applications
+            firstFetchCalled = true
         }
     }
     var body: some View {
@@ -20,13 +22,15 @@ struct Application: View {
                     ApplicationListCell(application: application, membersViewModel: applicationViewModel)
                 }
             }
-            
-            if self.applicationViewModel.applicationsList.count == 0 {
-                ActivityIndicator(isAnimating: .constant(true))
-                .onAppear {
-                    self.fetchApplication()
+            if !firstFetchCalled {
+                if self.applicationViewModel.applicationsList.count == 0 {
+                    ActivityIndicator(isAnimating: .constant(true))
+                        .onAppear {
+                            self.fetchApplication()
+                        }
                 }
             }
+            
         }.navigationBarTitle(Text("Application"))
     }
 }
