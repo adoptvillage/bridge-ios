@@ -17,36 +17,12 @@ struct ApplicationDetailView: View {
     @State var donatingfullAmount = false
     @State var showAlert = false
     @State var alertMessage = ""
-    
-    var validPartialAmount: Bool {
-        if Int(partialAmount) ?? 0 > Int(applicationDetail.remainingAmount) {
-            return false
-        } else {
-            return true
-        }
-    }
-    
-    var disabledAcceptButton: Bool {
-        (moderator.isEmpty || !moderator.isValidEmail()) || (!donatingfullAmount && partialAmount == "" || partialAmount == "0" || !partialAmount.isNumber || !validPartialAmount) && (!donatingfullAmount)
-    }
+    @State var showAcceptScreen = false
     
     var body: some View {
         Form {
-            Section {
-                HStack(alignment: .center){
-                    Text("Institute").foregroundColor(Color.secondary)
-                        .frame(width: 120)
-                    Divider()
-                    Text("\(applicationDetail.instituteName)")
-                    Spacer()
-                }
-                HStack(alignment: .center){
-                    Text("Amount needed").foregroundColor(Color.secondary)
-                        .frame(width: 120)
-                    Divider()
-                    Text("₹\(applicationDetail.remainingAmount)")
-                    Spacer()
-                }
+            Section(header: Text("Recipient Details")) {
+               
                 HStack(alignment: .center){
                     Text("Location").foregroundColor(Color.secondary)
                         .frame(width: 120)
@@ -60,60 +36,62 @@ struct ApplicationDetailView: View {
                     Spacer()
                 }
                 HStack(alignment: .center){
-                    Text("Active donors").foregroundColor(Color.secondary)
+                    Text("Amount Needed").foregroundColor(Color.secondary)
                         .frame(width: 120)
                     Divider()
-                    Text("\(applicationDetail.numberOdActiveDonor)")
+                    Text("₹\(applicationDetail.remainingAmount)")
                     Spacer()
                 }
             }.padding(5)
-            Section(footer: Text("Please add/invite a moderator in order to accept the application")) {
-                TextField("Moderator email", text: $moderator)
-                    .autocapitalization(.none)
-                
+            
+            Section(header: Text("Institute Details")) {
+                HStack(alignment: .center){
+                    Text("Name").foregroundColor(Color.secondary)
+                        .frame(width: 120)
+                    Divider()
+                    Text("\(applicationDetail.instituteName)")
+                    Spacer()
+                }
+                HStack(alignment: .center){
+                    Text("District").foregroundColor(Color.secondary)
+                        .frame(width: 120)
+                    Divider()
+                    Text("\(applicationDetail.instituteDistrict)")
+                    Spacer()
+                }
+                HStack(alignment: .center){
+                    Text("State").foregroundColor(Color.secondary)
+                        .frame(width: 120)
+                    Divider()
+                    Text("\(applicationDetail.instituteState)")
+                    Spacer()
+                }
             }
             
-            Section {
-                
-                Toggle(isOn: $donatingfullAmount) {
-                    Text("Donate full Amount")
-                }
-            }
-            if !donatingfullAmount {
-                Section {
-                    TextField("Amount", text: $partialAmount)
-                        .keyboardType(.numberPad)
-                }
+            Section(header: Text("Note from Recipient")) {
+                Text(applicationDetail.description)
+                    .foregroundColor(Color(.secondaryLabel))
             }
             
             Section {
                 Button(action: {
-                    let acceptData = ApplicationModel.AcceptData(applicationId: applicationDetail.id, donatingFullAmount: donatingfullAmount, amount: (donatingfullAmount ? Int(applicationDetail.remainingAmount) : Int(partialAmount)) ?? 0 , moderatorEmail: moderator)
-                    print(acceptData)
-                    applicationViewModel.acceptApplication(application: acceptData) { (response) in
-                        alertMessage = response.message
-                        showAlert.toggle()
-                    }
-
-                    
+                    showAcceptScreen.toggle()
                 }) {
                     HStack {
                         Text("Accept Application")
-                            .foregroundColor(disabledAcceptButton ? Color(.systemGray) : Color(.systemIndigo))
+                            .foregroundColor(Color(.systemIndigo))
                         Spacer()
-                        ActivityIndicator(isAnimating: $applicationViewModel.inActivity)
                     }
                     
                 }
-                .disabled(disabledAcceptButton)
             }
+            
         }
         
         .navigationBarTitle(Text("\(applicationDetail.firstName) \(applicationDetail.lastName)"))
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text(alertMessage), dismissButton: .default(Text("OK")) {
-                self.presentationMode.wrappedValue.dismiss()
-            })
+        
+        .sheet(isPresented: $showAcceptScreen) {
+            AcceptApplicationView(applicationDetail: applicationDetail, applicationViewModel: applicationViewModel, isPresented: $showAcceptScreen)
         }
     }
 }
