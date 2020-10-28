@@ -13,10 +13,10 @@ final class SignUpModel {
         var email: String
         var password: String
         var role: Int
+        var otp: String
     }
     
     struct SignUpResponseData: Codable {
-        var verify_link: String
         var message: String
     }
     
