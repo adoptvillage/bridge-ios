@@ -22,7 +22,7 @@ struct main : View{
                 .frame(width: 130, height: 130)
                     .padding(.bottom, 20)
             } else {
-                Spacer(minLength: geometry.size.height / 8)
+                Spacer(minLength: geometry.size.height / 10)
             }
             
             HStack{
