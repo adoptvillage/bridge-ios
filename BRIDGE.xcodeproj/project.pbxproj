@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -58,6 +58,7 @@
 		E132AF1E24F926C800D1B8C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132AF1D24F926C800D1B8C3 /* ContentView.swift */; };
 		E132AF2024F926CA00D1B8C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E132AF1F24F926CA00D1B8C3 /* Assets.xcassets */; };
 		E132AF2324F926CA00D1B8C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E132AF2224F926CA00D1B8C3 /* Preview Assets.xcassets */; };
+		E14B14DC2552C4CE005F82DF /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E14B14DB2552C4CE005F82DF /* SwiftUICharts */; };
 		E176ADAE24F9756B00D0C545 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADAD24F9756B00D0C545 /* Main.swift */; };
 		E176ADB024F975E600D0C545 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADAF24F975E600D0C545 /* Login.swift */; };
 		E176ADB224F9763A00D0C545 /* SignUP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADB124F9763A00D0C545 /* SignUP.swift */; };
@@ -135,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E14B14DC2552C4CE005F82DF /* SwiftUICharts in Frameworks */,
 				3323808CA93A0C5F488F6523 /* Pods_BRIDGE.framework in Frameworks */,
 				839E4AF325354D0700AA56A0 /* StoreKit.framework in Frameworks */,
 			);
@@ -348,6 +350,9 @@
 			dependencies = (
 			);
 			name = "Bridge - Adopt Your Village";
+			packageProductDependencies = (
+				E14B14DB2552C4CE005F82DF /* SwiftUICharts */,
+			);
 			productName = BRIDGE;
 			productReference = E132AF1624F926C800D1B8C3 /* Bridge - Adopt Your Village.app */;
 			productType = "com.apple.product-type.application";
@@ -376,6 +381,9 @@
 				Base,
 			);
 			mainGroup = E132AF0D24F926C800D1B8C3;
+			packageReferences = (
+				E14B14DA2552C4CE005F82DF /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = E132AF1724F926C800D1B8C3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -683,6 +691,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E14B14DA2552C4CE005F82DF /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E14B14DB2552C4CE005F82DF /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E14B14DA2552C4CE005F82DF /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E132AF0E24F926C800D1B8C3 /* Project object */;
 }
