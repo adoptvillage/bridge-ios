@@ -20,4 +20,8 @@ final class PreferredLocationModel {
         
     }
     
+    struct NetworkResponse: Codable {
+        var message: String
+    }
+    
 }

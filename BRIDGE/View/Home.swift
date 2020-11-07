@@ -81,15 +81,6 @@ struct Home: View {
                             //User id donor
                             VStack(alignment: .center, spacing: 12) {
                                 
-                                Text("Adopted Village")
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 25))
-                                    .foregroundColor(Color(.systemIndigo))
-                                    .padding(.top)
-                                    .padding(.bottom, 5)
-                                
-                                Divider()
-                                
                                 if preferredLocation.state == "" && preferredLocation.district == "" && preferredLocation.subDistrict == "" && preferredLocation.area == "" {
                                     Button(action: {
                                         print(preferredLocation)
@@ -97,26 +88,43 @@ struct Home: View {
                                     }) {
                                         
                                         Text("Adopt Village")
-                                            .font(.system(size: 17))
+                                            .font(.system(size: 20))
                                             .fontWeight(.bold)
-                                            .foregroundColor(.white)
+                                            .foregroundColor(Color(.systemIndigo))
                                             .frame(height: 50)
                                             .multilineTextAlignment(.center)
                                     }.padding()
-                                    .frame(width: UIScreen.main.bounds.width/2.5)
-                                    .frame(height : UIScreen.main.bounds.height / 15)
-                                    .background(Color(.systemIndigo))
                                     .cornerRadius(10)
                                     
                                 } else {
                                     
-                                    Text("\(preferredLocation.state), \(preferredLocation.district), \(preferredLocation.subDistrict), \(preferredLocation.area)")
+                                    Text("Adopted Village")
                                         .fontWeight(.bold)
-                                        .font(.system(size: 20))
-                                        .foregroundColor(Color(.systemGray))
+                                        .font(.system(size: 25))
+                                        .foregroundColor(Color(.systemIndigo))
                                         .padding(.top)
                                         .padding(.bottom, 5)
-                                        .multilineTextAlignment(.center)
+                                    
+                                    Divider()
+                                    
+                                    if preferredLocation.area == "" && preferredLocation.subDistrict == "" {
+                                        Text("\(preferredLocation.district), \(preferredLocation.state)")
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 20))
+                                            .foregroundColor(Color(.systemGray))
+                                            .padding(.top)
+                                            .padding(.bottom, 5)
+                                            .multilineTextAlignment(.center)
+                                    } else {
+                                        Text("\(preferredLocation.area), \(preferredLocation.subDistrict), \(preferredLocation.district), \(preferredLocation.state)")
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 20))
+                                            .foregroundColor(Color(.systemGray))
+                                            .padding(.top)
+                                            .padding(.bottom, 5)
+                                            .multilineTextAlignment(.center)
+                                    }
+                                        
                                 }
                                 
                                     
@@ -125,16 +133,18 @@ struct Home: View {
                             .frame(width: UIScreen.main.bounds.width - 40)
                             .background(Color(.secondarySystemBackground))
                             .cornerRadius(20)
-                            .padding(.bottom, 5)
+                            .padding(.bottom, 10)
                             
                             HStack() {
                                 
                                 
                                 NavigationLink(destination: Application()) {
+                                    Spacer()
                                     Text("Donate")
                                         .font(.system(size: 17))
                                         .fontWeight(.bold)
                                         .foregroundColor(.white)
+                                    Spacer()
                                 }.padding()
                                 .frame(width: UIScreen.main.bounds.width/2.5)
                                 .frame(height : UIScreen.main.bounds.height / 15)
@@ -167,7 +177,11 @@ struct Home: View {
                         
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    
+                    .navigationBarItems(trailing: Button(action: {
+                        self.fetchDashboard()
+                    }) {
+                        Image(systemName: "arrow.counterclockwise")
+                    })
                     .navigationBarTitle("Dashboard")
                     .sheet(isPresented: $showLocationSelector) {
                         LocationSelector( isPresented: $showLocationSelector)
@@ -191,6 +205,8 @@ struct Home: View {
                         self.fetchDashboard()
                     }
             }
+            
+            
         }
         
     }
