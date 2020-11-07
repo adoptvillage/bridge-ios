@@ -19,6 +19,7 @@ struct Profile: View {
     @State private var isProfileEditing: Bool = false
     @State var showAlert = false
     @State var alertMessage = ""
+    @ObservedObject var locationSelectorViewModel = LocationSelectorViewModel()
     
     func fetchProfile() {
         
@@ -105,6 +106,42 @@ struct Profile: View {
                         
                     }.padding(.vertical, 8)
                     
+                    if self.isProfileEditing {
+                        
+                        Section(header: Text("Preferred Location")) {
+                             
+                             Picker(selection: $locationSelectorViewModel.selectedState, label: Text("State")) {
+                                 ForEach(0 ..< locationSelectorViewModel.stateNames.count) { index in
+                                     Text(locationSelectorViewModel.stateNames[index])
+                                 }
+                             }
+                             
+                             if locationSelectorViewModel.selectedState == 26 {
+                                 Picker(selection: $locationSelectorViewModel.selectedDistrict, label: Text("District")) {
+                                     ForEach(0 ..< locationSelectorViewModel.districtNamesCount) { index in
+                                         Text(locationSelectorViewModel.districtNames[index])
+                                     }
+                                 }.id(locationSelectorViewModel.id)
+                                 Picker(selection: $locationSelectorViewModel.selectedSubDistrict, label: Text("SubDistrict")) {
+                                     ForEach(0 ..< locationSelectorViewModel.subDistrictNames.count){index in
+                                         Text(locationSelectorViewModel.subDistrictNames[index])
+                                     }
+                                 }.id(locationSelectorViewModel.id)
+                                 Picker(selection: $locationSelectorViewModel.selectedArea, label: Text("Area")) {
+                                     ForEach(0 ..< locationSelectorViewModel.areaNames.count){ index in
+                                         Text(locationSelectorViewModel.areaNames[index])
+                                     }
+                                 }.id(locationSelectorViewModel.id)
+                             } else {
+                                 Picker(selection: $locationSelectorViewModel.selectedDistrict, label: Text("District")) {
+                                     ForEach(0 ..< locationSelectorViewModel.districtNamesCount) { index in
+                                         Text(locationSelectorViewModel.districtNames[index])
+                                     }
+                                 }.id(locationSelectorViewModel.id)
+                             }
+                         }
+                     }
+                    
                     if !self.isProfileEditing {
                         Button(action: {
                             self.profileViewModel.logout()
@@ -116,12 +153,6 @@ struct Profile: View {
                             
                         }
                     }
-                    
-                    
-                    
-                    
-                    
-                    
                 }
                 
             }

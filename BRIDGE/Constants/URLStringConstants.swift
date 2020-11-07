@@ -14,6 +14,8 @@ struct URLStringConstants {
         static let login: String = baseUrl + "user/login"
         static let register: String = baseUrl + "user/register"
         static let profile: String = baseUrl + "user/profile"
+        static let dashboard: String = baseUrl + "user/dashboard"
+        static let preferredLocation: String = baseUrl + "user/preferredlocation"
     }
     struct Application {
         static let submit: String = baseUrl + "application/submit"

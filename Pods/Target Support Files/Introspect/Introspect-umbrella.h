@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_BRIDGEVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_BRIDGEVersionString[];
+FOUNDATION_EXPORT double IntrospectVersionNumber;
+FOUNDATION_EXPORT const unsigned char IntrospectVersionString[];
 

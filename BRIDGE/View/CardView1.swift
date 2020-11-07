@@ -11,9 +11,6 @@ struct CardView1 : View{
     var body: some View{
         
         VStack(spacing: 0) {
-            
-            
-            
             HStack(spacing : 15){
                 
                 VStack(alignment: .leading, spacing: 0){

@@ -8,12 +8,13 @@ post_install do |installer|
   end
 end
 
-target 'BRIDGE' do
+target 'Bridge - Adopt Your Village' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for BRIDGE
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
+  pod "SwiftUIRefresh"
 
 end

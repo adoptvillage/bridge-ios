@@ -58,7 +58,7 @@ struct LocationSelector: View {
                                     locationSelectorViewModel.updatePreferredRegion()
                                     self.isPresented = false
                                 }, label: {
-                                    Text("Update")
+                                    Text("Next")
                                 })
             )
             .navigationBarTitle("Preferred region")
