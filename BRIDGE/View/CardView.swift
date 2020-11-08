@@ -92,8 +92,6 @@ struct CardView : View{
             }
         }
         .padding(.all)
-        .frame(width: UIScreen.main.bounds.width - 40)
-        .frame(height : UIScreen.main.bounds.height / 3.2)
         .background(Color(.secondarySystemBackground))
         .cornerRadius(20)
         

@@ -165,7 +165,7 @@ struct Profile: View {
                         
                     }.padding(.vertical, 8)
                     
-                    if self.isProfileEditing {
+                    if self.isProfileEditing && role == "Donor" {
                         
                         Section(header: Text("Preferred Location")) {
                              

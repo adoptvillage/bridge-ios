@@ -20,6 +20,7 @@ struct URLStringConstants {
     struct Application {
         static let submit: String = baseUrl + "application/submit"
         static let fetch: String = baseUrl + "application"
+        static let filterApplication: String = baseUrl + "application/filter"
         static let accept: String = baseUrl + "application/accept"
     }
 }

@@ -28,6 +28,10 @@ struct Home: View {
                     print(applications)
                     refreshShowing = false
                 }
+            } else {
+                self.applications = dashboard.applications
+                self.role = dashboard.role ?? -1
+                refreshShowing = false
             }
             
         }
@@ -40,10 +44,10 @@ struct Home: View {
                 ScrollView{
                     
                     VStack{
-                        
                         if #available(iOS 14.0, *) {
                             if homeViewModel.inActivity == true {
-                                ActivityIndicator(isAnimating: $homeViewModel.inActivity)
+                                ShimmerView()
+                                    .frame(width: UIScreen.main.bounds.width - 40, height : UIScreen.main.bounds.height/3.2)
                             } else {
                                 if applications.count == 0 {
                                     EmptyCardView(role: role)
@@ -52,6 +56,8 @@ struct Home: View {
                                     TabView(selection: self.$index){
                                         ForEach(applications) { application in
                                             CardView(applicationData: application)
+                                                .frame(width: UIScreen.main.bounds.width - 40)
+                                                .frame(height : UIScreen.main.bounds.height / 3.2)
                                         }
                                     }.frame(height : UIScreen.main.bounds.height/3)
                                     .tabViewStyle(PageTabViewStyle())
@@ -79,6 +85,12 @@ struct Home: View {
                         
                         if role == 0 {
                             //User id donor
+                            if homeViewModel.inActivity {
+                                ShimmerView()
+                                    .frame(width: UIScreen.main.bounds.width - 40)
+                                    .frame(height: UIScreen.main.bounds.height/5)
+                                
+                            } else {
                             VStack(alignment: .center, spacing: 12) {
                                 
                                 if preferredLocation.state == "" && preferredLocation.district == "" && preferredLocation.subDistrict == "" && preferredLocation.area == "" {
@@ -135,10 +147,11 @@ struct Home: View {
                             .cornerRadius(20)
                             .padding(.bottom, 10)
                             
+                        }
                             HStack() {
                                 
                                 
-                                NavigationLink(destination: Application()) {
+                                NavigationLink(destination: Application(preferredLocation: preferredLocation)) {
                                     Spacer()
                                     Text("Donate")
                                         .font(.system(size: 17))

@@ -30,6 +30,7 @@ struct Login : View {
                         .foregroundColor(Color(.systemIndigo))
                     
                     TextField("Email Address", text: self.$email)
+                        .autocapitalization(.none)
                     
                     
                 }.padding(15)
