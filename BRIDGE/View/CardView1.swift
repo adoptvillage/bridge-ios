@@ -7,7 +7,10 @@
 import Foundation
 import SwiftUI
 
-struct CardView1 : View{
+struct HistoryCard : View{
+    
+    var historyDetail: HistoryModel.ApplicationHistory
+    
     var body: some View{
         
         VStack(spacing: 0) {
@@ -19,7 +22,7 @@ struct CardView1 : View{
                             .frame(width: 90)
                         Divider()
                         
-                        Text("Abhi")
+                        Text(historyDetail.recipientName)
                             .foregroundColor(Color(.systemIndigo))
                             .padding(.leading, 10)
                     }
@@ -29,7 +32,7 @@ struct CardView1 : View{
                         Text("Donor")
                             .frame(width: 90)
                         Divider()
-                        Text("Vatsal")
+                        Text(historyDetail.donorName)
                             .foregroundColor(Color(.systemIndigo))
                             .padding(.leading, 10)
                     }
@@ -39,7 +42,7 @@ struct CardView1 : View{
                         Text("Moderator")
                             .frame(width: 90)
                         Divider()
-                        Text("Ankit")
+                        Text(historyDetail.moderatorName)
                             .foregroundColor(Color(.systemIndigo))
                             .padding(.leading, 10)
                     }
@@ -49,12 +52,12 @@ struct CardView1 : View{
                 Spacer()
                 VStack(spacing: 5){
                     Text("Donated")
-                    Text("$400")
+                    Text("₹\(String(historyDetail.amount))")
                         .fontWeight(.bold)
-                        .font(.system(size: 30))
+                        .font(.system(size: 20))
                         .foregroundColor(Color(.white))
                   //      .padding(.bottom)
-                    Text("9/10/2020")
+                    Text(historyDetail.donationDate)
                         .font(.footnote)
                         .foregroundColor(Color(.white))
                         

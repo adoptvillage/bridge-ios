@@ -51,6 +51,9 @@
 		83B54D4D250BA7D4000D6383 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B54D4C250BA7D4000D6383 /* String+Ext.swift */; };
 		83C066F92539FC0000C91EF3 /* AcceptApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C066F82539FC0000C91EF3 /* AcceptApplicationView.swift */; };
 		83C70F6925586A15005FD30C /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C70F6825586A15005FD30C /* ShimmerView.swift */; };
+		83C70F6D25586A74005FD30C /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C70F6C25586A74005FD30C /* HistoryModel.swift */; };
+		83C70F7025586B53005FD30C /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C70F6F25586B53005FD30C /* HistoryViewModel.swift */; };
+		83C70F7625587651005FD30C /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C70F7525587651005FD30C /* Date+Ext.swift */; };
 		83E883DB25264DB000F4A97B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83E883DA25264DAF00F4A97B /* GoogleService-Info.plist */; };
 		83FBB647252AFE9E0086C3D1 /* DocumentUploadForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBB646252AFE9E0086C3D1 /* DocumentUploadForm.swift */; };
 		83FBB64B252B03860086C3D1 /* SubmitApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBB64A252B03860086C3D1 /* SubmitApplicationModel.swift */; };
@@ -118,6 +121,9 @@
 		83B54D4C250BA7D4000D6383 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		83C066F82539FC0000C91EF3 /* AcceptApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptApplicationView.swift; sourceTree = "<group>"; };
 		83C70F6825586A15005FD30C /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
+		83C70F6C25586A74005FD30C /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		83C70F6F25586B53005FD30C /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		83C70F7525587651005FD30C /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		83E883DA25264DAF00F4A97B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		83FBB646252AFE9E0086C3D1 /* DocumentUploadForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentUploadForm.swift; sourceTree = "<group>"; };
 		83FBB64A252B03860086C3D1 /* SubmitApplicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitApplicationModel.swift; sourceTree = "<group>"; };
@@ -218,6 +224,7 @@
 				83B1B767253399F700D51A16 /* ApplicationModel.swift */,
 				830C1DD4255344C0005A5E7E /* DashboardModel.swift */,
 				83A88B192557447B00CEE151 /* PreferredLocationModel.swift */,
+				83C70F6C25586A74005FD30C /* HistoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,6 +240,7 @@
 				83FBB64D252B05FF0086C3D1 /* SubmitApplicationViewModel.swift */,
 				8308E3E8252CDEA700471D2E /* DocumentUploadViewModel.swift */,
 				83B1B764253399B300D51A16 /* ApplicationViewModel.swift */,
+				83C70F6F25586B53005FD30C /* HistoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -285,6 +293,7 @@
 				83B54D4C250BA7D4000D6383 /* String+Ext.swift */,
 				8308E3EB252D1BC900471D2E /* URL+Ext.swift */,
 				83885F232532CF28002D462D /* UIApplication+Ext.swift */,
+				83C70F7525587651005FD30C /* Date+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -507,7 +516,9 @@
 				833B7BC5250A6EA900EDF77E /* ActivityIndicator.swift in Sources */,
 				8357C57A251F969A00B4A15A /* locationModel.swift in Sources */,
 				83FBB647252AFE9E0086C3D1 /* DocumentUploadForm.swift in Sources */,
+				83C70F7625587651005FD30C /* Date+Ext.swift in Sources */,
 				830C1DD5255344C0005A5E7E /* DashboardModel.swift in Sources */,
+				83C70F6D25586A74005FD30C /* HistoryModel.swift in Sources */,
 				830E14072526583700E7FA88 /* FirebaseManager.swift in Sources */,
 				833B7BBA250A5F7900EDF77E /* SignUpModel.swift in Sources */,
 				839676C5250B63C400D488EF /* Strings.swift in Sources */,
@@ -522,6 +533,7 @@
 				8357C580251F9F4000B4A15A /* LocationSelectorViewModel.swift in Sources */,
 				839676D3250B6F8F00D488EF /* Home.swift in Sources */,
 				83C70F6925586A15005FD30C /* ShimmerView.swift in Sources */,
+				83C70F7025586B53005FD30C /* HistoryViewModel.swift in Sources */,
 				8357C57D251F9D5D00B4A15A /* LocationSelector.swift in Sources */,
 				83FBB651252B1A8D0086C3D1 /* DocumentPicker.swift in Sources */,
 				83B54D4D250BA7D4000D6383 /* String+Ext.swift in Sources */,
