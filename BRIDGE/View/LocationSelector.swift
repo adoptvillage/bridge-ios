@@ -9,6 +9,8 @@ import SwiftUI
 struct LocationSelector: View {
     @ObservedObject var locationSelectorViewModel = LocationSelectorViewModel()
     @Binding var isPresented: Bool
+    @State var alertMessage = ""
+    @State var showAlert = false
     
     var body: some View {
         NavigationView {
@@ -55,13 +57,20 @@ struct LocationSelector: View {
                                             .accentColor(.secondary)
                                     }),
                                 trailing: Button.init(action: {
-                                    locationSelectorViewModel.updatePreferredRegion()
-                                    self.isPresented = false
+                                    locationSelectorViewModel.updatePreferredLocation { (respone) in
+                                        showAlert.toggle()
+                                        alertMessage = respone
+                                    }
+                                    
                                 }, label: {
-                                    Text("Update")
+                                    Text("Save")
                                 })
             )
             .navigationBarTitle("Preferred region")
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text(alertMessage), dismissButton: .default(Text("OK")) {
+                        self.isPresented = false})
+            }
         }
     }
 }

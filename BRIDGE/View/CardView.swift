@@ -8,11 +8,12 @@ import Foundation
 import SwiftUI
 
 struct CardView : View{
+    var applicationData: DashboardModel.ApplicationData
     var body: some View{
         
         VStack(alignment: .leading, spacing: 12) {
             
-            Text("Application No. 123")
+            Text(applicationData.applicantFirstName + " " + applicationData.applicantLastName)
                 .fontWeight(.bold)
                 .font(.system(size: 21))
                 .foregroundColor(Color(.systemIndigo))
@@ -26,7 +27,7 @@ struct CardView : View{
                             .frame(width: 120)
                         Divider()
                         
-                        Text("Abhi")
+                        Text(applicationData.donorName)
                             .foregroundColor(Color(.systemIndigo))
                             .padding(.leading, 50)
                     }
@@ -36,7 +37,7 @@ struct CardView : View{
                         Text("Moderator")
                             .frame(width: 120)
                         Divider()
-                        Text("Vatsal")
+                        Text(applicationData.moderatorName)
                             .foregroundColor(Color(.systemIndigo))
                             .padding(.leading, 50)
                     }
@@ -46,7 +47,7 @@ struct CardView : View{
                         Text("Amount")
                             .frame(width: 120)
                         Divider()
-                        Text("$400")
+                        Text("₹" + String(applicationData.donationAmount))
                             .foregroundColor(Color(.systemIndigo))
                             .padding(.leading, 50)
                     }
@@ -65,7 +66,7 @@ struct CardView : View{
                         }
                         VStack{
                             Capsule()
-                                .fill(Color.green)
+                                .fill(applicationData.status == 1 || applicationData.status == 2 ? Color.green : Color.gray)
                                 .frame(width: UIScreen.main.bounds.width/4, height: 5)
                             
                             Text("Being Reviewed")
@@ -75,10 +76,10 @@ struct CardView : View{
                         }
                         VStack{
                             Capsule()
-                                .fill(Color.gray)
+                                .fill(applicationData.status == 2 ? Color.green : Color.gray)
                                 .frame(width: UIScreen.main.bounds.width/4, height: 5)
                             
-                            Text("Completed")
+                            Text("Verified")
 //                                                    .fontWeight(.thin)
                                 .font(.system(size: 12))
                                 .frame(width: UIScreen.main.bounds.width/4, height: 20)
@@ -91,8 +92,6 @@ struct CardView : View{
             }
         }
         .padding(.all)
-        .frame(width: UIScreen.main.bounds.width - 40)
-        .frame(height : UIScreen.main.bounds.height / 3.2)
         .background(Color(.secondarySystemBackground))
         .cornerRadius(20)
         

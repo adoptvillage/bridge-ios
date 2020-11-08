@@ -10,18 +10,22 @@ import FirebaseAuth
 
 class ProfileViewModel: ObservableObject {
     
-    let profileData = ProfileModel.ProfileData(id: 0, firebaseId: "", name: "", email: "", isVerified: false, profileImage: "", address: "", location: "", occupation: "", isDonor: false, isRecipient: false, isModerator: false)
+    var profileData = ProfileModel.ProfileData(id: 0, firebaseId: "", name: "", email: "", isVerified: false, profileImage: "", address: "", location: "", occupation: "", isDonor: false, isRecipient: false, isModerator: false)
     var profileUpdateResponseData = ProfileModel.NetworkResponse(message: "")
+    @Published var preferredLocation = PreferredLocationModel.LocationResponse(state: "", district: "", subDistrict: "", area: "")
     private var cancellable: AnyCancellable?
+    @Published var inActivity: Bool = false
     
     
     func getProfile(completion: @escaping (ProfileModel.ProfileData) -> Void) {
-        
+        inActivity = true
         FirebaseManager.getToken { (token) in
             self.cancellable = NetworkManager.callAPI(urlString: URLStringConstants.User.profile, token: token)
                 .receive(on: RunLoop.main)
                 .catch { _ in Just(self.profileData) }
                 .sink { profile in
+                    self.profileData = profile
+                    self.inActivity = false
                     completion(profile)
                 }
         }
@@ -29,7 +33,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func updateProfile(profileUpdateData: ProfileModel.ProfileUpdateData, completion: @escaping (String) -> Void) {
-        
+        inActivity = true
         guard let uploadData = try? JSONEncoder().encode(profileUpdateData) else {
             return
         }
@@ -39,6 +43,39 @@ class ProfileViewModel: ObservableObject {
                 .receive(on: RunLoop.main)
                 .catch { _ in Just(self.profileUpdateResponseData) }
                 .sink { response in
+                    self.inActivity = false
+                    completion(response.message)
+                }
+        }
+        
+    }
+    
+    func getPreferredLocation(completion: @escaping (PreferredLocationModel.LocationResponse) -> Void) {
+        inActivity = true
+        FirebaseManager.getToken { (token) in
+            self.cancellable = NetworkManager.callAPI(urlString: URLStringConstants.User.preferredLocation, token: token)
+                .receive(on: RunLoop.main)
+                .catch { _ in Just(self.preferredLocation) }
+                .sink { preferredLocation in
+                    self.inActivity = false
+                    completion(preferredLocation)
+                }
+        }
+        
+    }
+    
+    func updatePreferredLocation(preferredLocationUploadData: PreferredLocationModel.LocationResponse, completion: @escaping (String) -> Void) {
+        inActivity = true
+        guard let uploadData = try? JSONEncoder().encode(preferredLocationUploadData) else {
+            return
+        }
+        
+        FirebaseManager.getToken { (token) in
+            self.cancellable = NetworkManager.callAPI(urlString: URLStringConstants.User.preferredLocation, httpMethod: "POST", uploadData: uploadData, token: token)
+                .receive(on: RunLoop.main)
+                .catch { _ in Just(self.profileUpdateResponseData) }
+                .sink { response in
+                    self.inActivity = false
                     completion(response.message)
                 }
         }

@@ -15,10 +15,14 @@ class ApplicationViewModel: ObservableObject {
     @Published var inActivity = false
 
     
-    func fetchApplications(completion: @escaping ([ApplicationModel.ApplicationData]) -> Void) {
+    func fetchApplications(preferredLocation: PreferredLocationModel.LocationResponse, completion: @escaping ([ApplicationModel.ApplicationData]) -> Void) {
+        
+        guard let uploadData = try? JSONEncoder().encode(preferredLocation) else {
+            return
+        }
         
         FirebaseManager.getToken { (token) in
-            self.cancellable = NetworkManager.callAPI(urlString: URLStringConstants.Application.fetch, token: token)
+            self.cancellable = NetworkManager.callAPI(urlString: URLStringConstants.Application.filterApplication, httpMethod: "POST", uploadData: uploadData, token: token)
                 .receive(on: RunLoop.main)
                 .catch { _ in Just(self.applicationsList) }
                 .sink { applicationsList in

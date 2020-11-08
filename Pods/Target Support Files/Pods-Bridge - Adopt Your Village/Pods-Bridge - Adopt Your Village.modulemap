@@ -1,0 +1,6 @@
+framework module Pods_Bridge___Adopt_Your_Village {
+  umbrella header "Pods-Bridge - Adopt Your Village-umbrella.h"
+
+  export *
+  module * { export * }
+}

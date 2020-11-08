@@ -27,9 +27,10 @@ class LoginViewModel: ObservableObject {
             if !authRes.user.isEmailVerified {
                 completion("Please Verify your email address first")
                 self.inActivity = false
+            } else {
+                UserDefaults.standard.set(true, forKey: UserDefaultsConstants.isLoggedIn)
+                self.inActivity = false
             }
-            UserDefaults.standard.set(true, forKey: UserDefaultsConstants.isLoggedIn)
-            self.inActivity = false
         }
         
     }

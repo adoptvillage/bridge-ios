@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import Combine
 
 class LocationSelectorViewModel: ObservableObject {
     private var districtSelections: [Int: Int] = [:]
@@ -13,9 +14,13 @@ class LocationSelectorViewModel: ObservableObject {
     @Published var id: UUID = UUID()
     @Published var allStates: [States]!
     @Published var villageData: [District]!
+    @Published var inActivity = false
+    @Published var preferredLocationUpdateResponse = PreferredLocationModel.NetworkResponse(message: "")
+    private var cancellable: AnyCancellable?
+    
     @Published var selectedState: Int = 0 {
         willSet {
-//            print("state changed", newValue, districtSelections[newValue] ?? 0)
+            //            print("state changed", newValue, districtSelections[newValue] ?? 0)
             selectedDistrict = districtSelections[newValue] ?? 0
             id = UUID()
         }
@@ -23,7 +28,7 @@ class LocationSelectorViewModel: ObservableObject {
     @Published var selectedDistrict: Int = 0 {
         willSet {
             DispatchQueue.main.async { [newValue] in
-//                print("district changed", newValue)
+                //                print("district changed", newValue)
                 self.selectedSubDistrict = self.subDistrictSelections[newValue] ?? 0
                 self.districtSelections[self.selectedState] = newValue
             }
@@ -34,7 +39,7 @@ class LocationSelectorViewModel: ObservableObject {
     @Published var selectedSubDistrict: Int = 0 {
         willSet {
             DispatchQueue.main.async { [newValue] in
-//                print("subdistrict changed", newValue)
+                //                print("subdistrict changed", newValue)
                 self.selectedArea = self.areaSelections[newValue] ?? 0
                 self.subDistrictSelections[self.selectedDistrict] = newValue
             }
@@ -44,7 +49,7 @@ class LocationSelectorViewModel: ObservableObject {
     @Published var selectedArea: Int = 0 {
         willSet {
             DispatchQueue.main.async { [newValue] in
-//                print("area changed", newValue)
+                //                print("area changed", newValue)
                 self.areaSelections[self.selectedSubDistrict] = newValue
             }
             id = UUID()
@@ -106,16 +111,34 @@ class LocationSelectorViewModel: ObservableObject {
         return stateNames[selectedState]
     }
     
-    func updatePreferredRegion() {
-        print(stateNames[selectedState])
-        if selectedState == 26 {
-            print(villageData[selectedDistrict].district)
-            print(subDistrictNames[selectedSubDistrict])
-            print(areaNames[selectedArea])
-        } else {
-            print(districtNames[selectedDistrict])
-            
+  
+    func updatePreferredLocation(completion: @escaping (String) -> Void) {
+        //        print(stateNames[selectedState])
+        //        if selectedState == 26 {
+        //            print(villageData[selectedDistrict].district)
+        //            print(subDistrictNames[selectedSubDistrict])
+        //            print(areaNames[selectedArea])
+        //        } else {
+        //            print(districtNames[selectedDistrict])
+        //
+        //        }
+        inActivity = true
+        let data = PreferredLocationModel.LocationResponse(state: stateNames[selectedState], district: selectedState == 26 ? villageData[selectedDistrict].district : districtNames[selectedDistrict], subDistrict: selectedState == 26 ? subDistrictNames[selectedSubDistrict] : "", area: selectedState == 26 ? areaNames[selectedArea] : "")
+        guard let uploadData = try? JSONEncoder().encode(data) else {
+            return
         }
+        
+        FirebaseManager.getToken { (token) in
+            self.cancellable = NetworkManager.callAPI(urlString: URLStringConstants.User.preferredLocation, httpMethod: "POST", uploadData: uploadData, token: token)
+                .receive(on: RunLoop.main)
+                .catch { _ in Just(self.preferredLocationUpdateResponse) }
+                .sink { response in
+                    self.inActivity = false
+                    completion(response.message)
+                }
+        }
+        
     }
+    
     
 }

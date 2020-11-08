@@ -19,6 +19,8 @@ struct Profile: View {
     @State private var isProfileEditing: Bool = false
     @State var showAlert = false
     @State var alertMessage = ""
+    @State var preferredLocation = ""
+    @ObservedObject var locationSelectorViewModel = LocationSelectorViewModel()
     
     func fetchProfile() {
         
@@ -29,6 +31,16 @@ struct Profile: View {
             self.address = profile.address ?? ""
             self.location = profile.location ?? ""
             self.occupation = profile.occupation ?? ""
+            if profile.isDonor {
+                profileViewModel.getPreferredLocation { (location) in
+                    if location.area == "" && location.subDistrict == ""{
+                        self.preferredLocation = "\(location.district), \(location.state)"
+                    } else {
+                        self.preferredLocation = "\(location.area), \(location.subDistrict), \(location.district), \(location.state)"
+                    }
+                    
+                }
+            }
             
         }
     }
@@ -41,6 +53,14 @@ struct Profile: View {
                 Form{
                     
                     Section{
+                        if profileViewModel.inActivity {
+                            HStack(alignment: .center) {
+                                Spacer()
+                                ActivityIndicator(isAnimating: $profileViewModel.inActivity)
+                                Spacer()
+                            }
+                            
+                        }
                         HStack(alignment: .center) {
                             Spacer()
                             CircleImage()
@@ -52,28 +72,42 @@ struct Profile: View {
                             Text("Name").foregroundColor(Color.secondary)
                                 .frame(width: 120)
                             Divider()
-                            Spacer()
+                            if isProfileEditing {
+                                TextField("", text: $name)
+                                    .disabled(!self.isProfileEditing)
+                            } else{
+                                Text(name)
+                                Spacer()
+                            }
                             
-                            TextField("", text: $name)
-                                .disabled(!self.isProfileEditing)
                         }
                         
                         HStack{
                             Text("Email").foregroundColor(Color.secondary)
                                 .frame(width: 120)
                             Divider()
-                            Spacer()
-                            TextField("", text: $email)
-                                .disabled(true)
+                            if isProfileEditing {
+                                TextField("", text: $email)
+                                    .disabled(true)
+                            } else{
+                                Text(email)
+                                Spacer()
+                            }
+                            
                         }.foregroundColor(self.isProfileEditing ? Color(.systemGray) : Color.primary)
                         
                         HStack{
                             Text("Address").foregroundColor(Color.secondary)
                                 .frame(width: 120)
                             Divider()
-                            Spacer()
-                            TextField("", text: $address)
-                                .disabled(!self.isProfileEditing)
+                            if isProfileEditing {
+                                TextField("", text: $address)
+                                    .disabled(!self.isProfileEditing)
+                            } else{
+                                Text(address)
+                                Spacer()
+                            }
+                            
                         }
                         
                         HStack{
@@ -81,29 +115,91 @@ struct Profile: View {
                                 .frame(width: 120)
                             Divider()
                             Spacer()
-                            TextField("", text: $location)
-                                .disabled(!self.isProfileEditing)
+                            if isProfileEditing {
+                                TextField("", text: $location)
+                                    .disabled(!self.isProfileEditing)
+                            } else{
+                                Text(location)
+                                Spacer()
+                            }
+                            
                         }
                         
                         HStack{
                             Text("Role").foregroundColor(Color.secondary)
                                 .frame(width: 120)
                             Divider()
-                            Spacer()
-                            TextField("", text: $role)
-                                .disabled(true)
+                            if isProfileEditing {
+                                TextField("", text: $role)
+                                    .disabled(true)
+                            } else{
+                                Text(role)
+                                Spacer()
+                            }
+                            
                         }.foregroundColor(self.isProfileEditing ? Color(.systemGray) : Color.primary)
                         
                         HStack{
                             Text("Occupation").foregroundColor(Color.secondary)
                                 .frame(width: 120)
                             Divider()
-                            Spacer()
-                            TextField("", text: $occupation)
-                                .disabled(!self.isProfileEditing)
+                            if isProfileEditing {
+                                TextField("", text: $occupation)
+                                    .disabled(!self.isProfileEditing)
+                            } else{
+                                Text(occupation)
+                                Spacer()
+                            }
+                            
+                        }
+                        if role == "Donor" {
+                            HStack{
+                                Text("Preferred Location").foregroundColor(Color.secondary)
+                                    .frame(width: 120)
+                                Divider()
+                                Text(preferredLocation)
+                                Spacer()
+                            }
                         }
                         
+                        
                     }.padding(.vertical, 8)
+                    
+                    if self.isProfileEditing && role == "Donor" {
+                        
+                        Section(header: Text("Preferred Location")) {
+                             
+                             Picker(selection: $locationSelectorViewModel.selectedState, label: Text("State")) {
+                                 ForEach(0 ..< locationSelectorViewModel.stateNames.count) { index in
+                                     Text(locationSelectorViewModel.stateNames[index])
+                                 }
+                             }
+                             
+                             if locationSelectorViewModel.selectedState == 26 {
+                                 Picker(selection: $locationSelectorViewModel.selectedDistrict, label: Text("District")) {
+                                     ForEach(0 ..< locationSelectorViewModel.districtNamesCount) { index in
+                                         Text(locationSelectorViewModel.districtNames[index])
+                                     }
+                                 }.id(locationSelectorViewModel.id)
+                                 Picker(selection: $locationSelectorViewModel.selectedSubDistrict, label: Text("SubDistrict")) {
+                                     ForEach(0 ..< locationSelectorViewModel.subDistrictNames.count){index in
+                                         Text(locationSelectorViewModel.subDistrictNames[index])
+                                     }
+                                 }.id(locationSelectorViewModel.id)
+                                 Picker(selection: $locationSelectorViewModel.selectedArea, label: Text("Area")) {
+                                     ForEach(0 ..< locationSelectorViewModel.areaNames.count){ index in
+                                         Text(locationSelectorViewModel.areaNames[index])
+                                     }
+                                 }.id(locationSelectorViewModel.id)
+                             } else {
+                                 Picker(selection: $locationSelectorViewModel.selectedDistrict, label: Text("District")) {
+                                     ForEach(0 ..< locationSelectorViewModel.districtNamesCount) { index in
+                                         Text(locationSelectorViewModel.districtNames[index])
+                                     }
+                                 }.id(locationSelectorViewModel.id)
+                             }
+                         }
+                     }
                     
                     if !self.isProfileEditing {
                         Button(action: {
@@ -116,12 +212,6 @@ struct Profile: View {
                             
                         }
                     }
-                    
-                    
-                    
-                    
-                    
-                    
                 }
                 
             }
@@ -133,8 +223,20 @@ struct Profile: View {
                 trailing: Button(self.isProfileEditing ? "Done" : "Edit") {
                 if self.isProfileEditing {
                     profileViewModel.updateProfile(profileUpdateData: ProfileModel.ProfileUpdateData(name: name, address: address, location: location, occupation: occupation)) { (responseMessage) in
-                        self.alertMessage = responseMessage
-                        self.showAlert.toggle()
+                        if role == "Donor" {
+                            
+                            profileViewModel.updatePreferredLocation(preferredLocationUploadData: PreferredLocationModel.LocationResponse(state: locationSelectorViewModel.stateNames[locationSelectorViewModel.selectedState], district: locationSelectorViewModel.selectedState == 26 ? locationSelectorViewModel.villageData[locationSelectorViewModel.selectedDistrict].district : locationSelectorViewModel.districtNames[locationSelectorViewModel.selectedDistrict], subDistrict: locationSelectorViewModel.selectedState != 26 ? "" :  locationSelectorViewModel.subDistrictNames[locationSelectorViewModel.selectedSubDistrict], area: locationSelectorViewModel.selectedState != 26 ? "" :  locationSelectorViewModel.areaNames[locationSelectorViewModel.selectedArea])) { (msg) in
+                                print(msg)
+                                self.alertMessage = responseMessage
+                                self.showAlert.toggle()
+                                
+                            }
+                        } else {
+                            self.alertMessage = responseMessage
+                            self.showAlert.toggle()
+                        }
+                        
+                        
                     }
                     print("profile edited")
                 }

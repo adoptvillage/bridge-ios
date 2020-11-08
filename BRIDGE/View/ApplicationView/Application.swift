@@ -7,10 +7,11 @@
 import SwiftUI
 
 struct Application: View {
+    var preferredLocation: PreferredLocationModel.LocationResponse
     @ObservedObject var applicationViewModel = ApplicationViewModel()
     @State var firstFetchCalled = false
     func fetchApplication() {
-        applicationViewModel.fetchApplications { (applications) in
+        applicationViewModel.fetchApplications(preferredLocation: preferredLocation) { (applications) in
             applicationViewModel.applicationsList = applications
             firstFetchCalled = true
         }
@@ -35,8 +36,3 @@ struct Application: View {
     }
 }
 
-struct Application_Previews: PreviewProvider {
-    static var previews: some View {
-        Application()
-    }
-}

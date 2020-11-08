@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3323808CA93A0C5F488F6523 /* Pods_BRIDGE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7BEE6705F161643B48C7F /* Pods_BRIDGE.framework */; };
+		11CA9C3B6F17426877471D54 /* Pods_Bridge___Adopt_Your_Village.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029A7C5B7599EFA32161DD67 /* Pods_Bridge___Adopt_Your_Village.framework */; };
 		8307C77F2521D2160076BD40 /* ApplicationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8307C77E2521D2160076BD40 /* ApplicationListCell.swift */; };
 		8308478325109B68009CDE27 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8308478225109B68009CDE27 /* Profile.swift */; };
 		8308478525109E1A009CDE27 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8308478425109E1A009CDE27 /* ProfileModel.swift */; };
 		8308E3E9252CDEA700471D2E /* DocumentUploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8308E3E8252CDEA700471D2E /* DocumentUploadViewModel.swift */; };
 		8308E3EC252D1BC900471D2E /* URL+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8308E3EB252D1BC900471D2E /* URL+Ext.swift */; };
+		830C1DD5255344C0005A5E7E /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830C1DD4255344C0005A5E7E /* DashboardModel.swift */; };
+		830C1DD92553541A005A5E7E /* EmptyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830C1DD82553541A005A5E7E /* EmptyCardView.swift */; };
+		830C1DDE2553562F005A5E7E /* CardView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830C1DDD2553562F005A5E7E /* CardView1.swift */; };
 		830E14072526583700E7FA88 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E14062526583700E7FA88 /* FirebaseManager.swift */; };
 		833B7BB8250A5F0500EDF77E /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B7BB7250A5F0500EDF77E /* LoginModel.swift */; };
 		833B7BBA250A5F7900EDF77E /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B7BB9250A5F7900EDF77E /* SignUpModel.swift */; };
@@ -41,11 +44,16 @@
 		839676D5250B710C00D488EF /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839676D4250B710C00D488EF /* ProfileViewModel.swift */; };
 		839E4AF325354D0700AA56A0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839E4AF225354D0700AA56A0 /* StoreKit.framework */; };
 		83A8084B252DCAD400CF0EC6 /* DocumentFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A8084A252DCAD400CF0EC6 /* DocumentFile.swift */; };
+		83A88B1A2557447B00CEE151 /* PreferredLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A88B192557447B00CEE151 /* PreferredLocationModel.swift */; };
 		83B1B765253399B300D51A16 /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1B764253399B300D51A16 /* ApplicationViewModel.swift */; };
 		83B1B768253399F700D51A16 /* ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1B767253399F700D51A16 /* ApplicationModel.swift */; };
 		83B1B76B2533A2EA00D51A16 /* ApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1B76A2533A2EA00D51A16 /* ApplicationDetailView.swift */; };
 		83B54D4D250BA7D4000D6383 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B54D4C250BA7D4000D6383 /* String+Ext.swift */; };
 		83C066F92539FC0000C91EF3 /* AcceptApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C066F82539FC0000C91EF3 /* AcceptApplicationView.swift */; };
+		83C70F6925586A15005FD30C /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C70F6825586A15005FD30C /* ShimmerView.swift */; };
+		83C70F6D25586A74005FD30C /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C70F6C25586A74005FD30C /* HistoryModel.swift */; };
+		83C70F7025586B53005FD30C /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C70F6F25586B53005FD30C /* HistoryViewModel.swift */; };
+		83C70F7625587651005FD30C /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C70F7525587651005FD30C /* Date+Ext.swift */; };
 		83E883DB25264DB000F4A97B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83E883DA25264DAF00F4A97B /* GoogleService-Info.plist */; };
 		83FBB647252AFE9E0086C3D1 /* DocumentUploadForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBB646252AFE9E0086C3D1 /* DocumentUploadForm.swift */; };
 		83FBB64B252B03860086C3D1 /* SubmitApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FBB64A252B03860086C3D1 /* SubmitApplicationModel.swift */; };
@@ -62,13 +70,12 @@
 		E176ADAE24F9756B00D0C545 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADAD24F9756B00D0C545 /* Main.swift */; };
 		E176ADB024F975E600D0C545 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADAF24F975E600D0C545 /* Login.swift */; };
 		E176ADB224F9763A00D0C545 /* SignUP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176ADB124F9763A00D0C545 /* SignUP.swift */; };
-		E1C9F50E2530BE9A0072F322 /* CardView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9F50D2530BE9A0072F322 /* CardView1.swift */; };
 		E1C9F5112530D1270072F322 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9F5102530D1270072F322 /* SearchBar.swift */; };
 		E1D8200A250FA9AE00630620 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D82009250FA9AE00630620 /* CircleImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0BF7BEE6705F161643B48C7F /* Pods_BRIDGE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BRIDGE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		029A7C5B7599EFA32161DD67 /* Pods_Bridge___Adopt_Your_Village.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Bridge___Adopt_Your_Village.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14C3723504A365B6BB4E8A06 /* Pods-BRIDGE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BRIDGE.release.xcconfig"; path = "Target Support Files/Pods-BRIDGE/Pods-BRIDGE.release.xcconfig"; sourceTree = "<group>"; };
 		6C9D898AF72546D68F53185D /* Pods-BRIDGE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BRIDGE.debug.xcconfig"; path = "Target Support Files/Pods-BRIDGE/Pods-BRIDGE.debug.xcconfig"; sourceTree = "<group>"; };
 		8307C77E2521D2160076BD40 /* ApplicationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationListCell.swift; sourceTree = "<group>"; };
@@ -76,6 +83,9 @@
 		8308478425109E1A009CDE27 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		8308E3E8252CDEA700471D2E /* DocumentUploadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentUploadViewModel.swift; sourceTree = "<group>"; };
 		8308E3EB252D1BC900471D2E /* URL+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Ext.swift"; sourceTree = "<group>"; };
+		830C1DD4255344C0005A5E7E /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
+		830C1DD82553541A005A5E7E /* EmptyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCardView.swift; sourceTree = "<group>"; };
+		830C1DDD2553562F005A5E7E /* CardView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView1.swift; sourceTree = "<group>"; };
 		830E14062526583700E7FA88 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		833B7BB7250A5F0500EDF77E /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		833B7BB9250A5F7900EDF77E /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -104,17 +114,23 @@
 		839676D4250B710C00D488EF /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		839E4AF225354D0700AA56A0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		83A8084A252DCAD400CF0EC6 /* DocumentFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFile.swift; sourceTree = "<group>"; };
+		83A88B192557447B00CEE151 /* PreferredLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredLocationModel.swift; sourceTree = "<group>"; };
 		83B1B764253399B300D51A16 /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
 		83B1B767253399F700D51A16 /* ApplicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModel.swift; sourceTree = "<group>"; };
 		83B1B76A2533A2EA00D51A16 /* ApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDetailView.swift; sourceTree = "<group>"; };
 		83B54D4C250BA7D4000D6383 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		83C066F82539FC0000C91EF3 /* AcceptApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptApplicationView.swift; sourceTree = "<group>"; };
+		83C70F6825586A15005FD30C /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
+		83C70F6C25586A74005FD30C /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		83C70F6F25586B53005FD30C /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		83C70F7525587651005FD30C /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		83E883DA25264DAF00F4A97B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		83FBB646252AFE9E0086C3D1 /* DocumentUploadForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentUploadForm.swift; sourceTree = "<group>"; };
 		83FBB64A252B03860086C3D1 /* SubmitApplicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitApplicationModel.swift; sourceTree = "<group>"; };
 		83FBB64D252B05FF0086C3D1 /* SubmitApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitApplicationViewModel.swift; sourceTree = "<group>"; };
 		83FBB650252B1A8D0086C3D1 /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 		83FC034E251FC925009960C1 /* punjabVillages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = punjabVillages.json; sourceTree = "<group>"; };
+		A58D51BDD6EE9EDEEDA1DB7E /* Pods-Bridge - Adopt Your Village.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bridge - Adopt Your Village.release.xcconfig"; path = "Target Support Files/Pods-Bridge - Adopt Your Village/Pods-Bridge - Adopt Your Village.release.xcconfig"; sourceTree = "<group>"; };
 		E10EF0E82527428A009EDABB /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		E132AF1624F926C800D1B8C3 /* Bridge - Adopt Your Village.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bridge - Adopt Your Village.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E132AF1924F926C800D1B8C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,8 +142,8 @@
 		E176ADAD24F9756B00D0C545 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		E176ADAF24F975E600D0C545 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		E176ADB124F9763A00D0C545 /* SignUP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUP.swift; sourceTree = "<group>"; };
-		E1C9F50D2530BE9A0072F322 /* CardView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView1.swift; sourceTree = "<group>"; };
 		E1C9F5102530D1270072F322 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		E1D12ECBEDD229199A810432 /* Pods-Bridge - Adopt Your Village.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bridge - Adopt Your Village.debug.xcconfig"; path = "Target Support Files/Pods-Bridge - Adopt Your Village/Pods-Bridge - Adopt Your Village.debug.xcconfig"; sourceTree = "<group>"; };
 		E1D82009250FA9AE00630620 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,8 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E14B14DC2552C4CE005F82DF /* SwiftUICharts in Frameworks */,
-				3323808CA93A0C5F488F6523 /* Pods_BRIDGE.framework in Frameworks */,
 				839E4AF325354D0700AA56A0 /* StoreKit.framework in Frameworks */,
+				11CA9C3B6F17426877471D54 /* Pods_Bridge___Adopt_Your_Village.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,8 +166,18 @@
 			children = (
 				6C9D898AF72546D68F53185D /* Pods-BRIDGE.debug.xcconfig */,
 				14C3723504A365B6BB4E8A06 /* Pods-BRIDGE.release.xcconfig */,
+				E1D12ECBEDD229199A810432 /* Pods-Bridge - Adopt Your Village.debug.xcconfig */,
+				A58D51BDD6EE9EDEEDA1DB7E /* Pods-Bridge - Adopt Your Village.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		830C1DD725535409005A5E7E /* EmptyViews */ = {
+			isa = PBXGroup;
+			children = (
+				830C1DD82553541A005A5E7E /* EmptyCardView.swift */,
+			);
+			path = EmptyViews;
 			sourceTree = "<group>";
 		};
 		830E14142526777600E7FA88 /* Profile */ = {
@@ -165,6 +191,8 @@
 		833B7BB4250A3E3700EDF77E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				83C70F6725586A04005FD30C /* LoadingViews */,
+				830C1DD725535409005A5E7E /* EmptyViews */,
 				83FBB641252AFE4A0086C3D1 /* SubmitApplication */,
 				830E14142526777600E7FA88 /* Profile */,
 				834979C72521CFA50060C1ED /* ApplicationView */,
@@ -172,9 +200,9 @@
 				E176ADAF24F975E600D0C545 /* Login.swift */,
 				E1C9F5102530D1270072F322 /* SearchBar.swift */,
 				E10EF0E82527428A009EDABB /* CardView.swift */,
-				E1C9F50D2530BE9A0072F322 /* CardView1.swift */,
 				839676CE250B6F4500D488EF /* TabBar.swift */,
 				839676D2250B6F8F00D488EF /* Home.swift */,
+				830C1DDD2553562F005A5E7E /* CardView1.swift */,
 				E1D82009250FA9AE00630620 /* CircleImage.swift */,
 				8357C57C251F9D5D00B4A15A /* LocationSelector.swift */,
 				834FCEE22529F624007E5404 /* History.swift */,
@@ -194,6 +222,9 @@
 				83FBB64A252B03860086C3D1 /* SubmitApplicationModel.swift */,
 				83A8084A252DCAD400CF0EC6 /* DocumentFile.swift */,
 				83B1B767253399F700D51A16 /* ApplicationModel.swift */,
+				830C1DD4255344C0005A5E7E /* DashboardModel.swift */,
+				83A88B192557447B00CEE151 /* PreferredLocationModel.swift */,
+				83C70F6C25586A74005FD30C /* HistoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,6 +240,7 @@
 				83FBB64D252B05FF0086C3D1 /* SubmitApplicationViewModel.swift */,
 				8308E3E8252CDEA700471D2E /* DocumentUploadViewModel.swift */,
 				83B1B764253399B300D51A16 /* ApplicationViewModel.swift */,
+				83C70F6F25586B53005FD30C /* HistoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -261,8 +293,17 @@
 				83B54D4C250BA7D4000D6383 /* String+Ext.swift */,
 				8308E3EB252D1BC900471D2E /* URL+Ext.swift */,
 				83885F232532CF28002D462D /* UIApplication+Ext.swift */,
+				83C70F7525587651005FD30C /* Date+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		83C70F6725586A04005FD30C /* LoadingViews */ = {
+			isa = PBXGroup;
+			children = (
+				83C70F6825586A15005FD30C /* ShimmerView.swift */,
+			);
+			path = LoadingViews;
 			sourceTree = "<group>";
 		};
 		83FBB641252AFE4A0086C3D1 /* SubmitApplication */ = {
@@ -327,7 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				839E4AF225354D0700AA56A0 /* StoreKit.framework */,
-				0BF7BEE6705F161643B48C7F /* Pods_BRIDGE.framework */,
+				029A7C5B7599EFA32161DD67 /* Pods_Bridge___Adopt_Your_Village.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -416,15 +457,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BRIDGE/Pods-BRIDGE-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Bridge - Adopt Your Village/Pods-Bridge - Adopt Your Village-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BRIDGE/Pods-BRIDGE-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Bridge - Adopt Your Village/Pods-Bridge - Adopt Your Village-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BRIDGE/Pods-BRIDGE-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bridge - Adopt Your Village/Pods-Bridge - Adopt Your Village-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		40C9375D41A77B15522396C2 /* [CP] Check Pods Manifest.lock */ = {
@@ -442,7 +483,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BRIDGE-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Bridge - Adopt Your Village-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -466,7 +507,6 @@
 				833B7BBF250A615F00EDF77E /* NetworkManager.swift in Sources */,
 				8308478325109B68009CDE27 /* Profile.swift in Sources */,
 				E1C9F5112530D1270072F322 /* SearchBar.swift in Sources */,
-				E1C9F50E2530BE9A0072F322 /* CardView1.swift in Sources */,
 				8307C77F2521D2160076BD40 /* ApplicationListCell.swift in Sources */,
 				83885F242532CF28002D462D /* UIApplication+Ext.swift in Sources */,
 				839676D5250B710C00D488EF /* ProfileViewModel.swift in Sources */,
@@ -476,9 +516,13 @@
 				833B7BC5250A6EA900EDF77E /* ActivityIndicator.swift in Sources */,
 				8357C57A251F969A00B4A15A /* locationModel.swift in Sources */,
 				83FBB647252AFE9E0086C3D1 /* DocumentUploadForm.swift in Sources */,
+				83C70F7625587651005FD30C /* Date+Ext.swift in Sources */,
+				830C1DD5255344C0005A5E7E /* DashboardModel.swift in Sources */,
+				83C70F6D25586A74005FD30C /* HistoryModel.swift in Sources */,
 				830E14072526583700E7FA88 /* FirebaseManager.swift in Sources */,
 				833B7BBA250A5F7900EDF77E /* SignUpModel.swift in Sources */,
 				839676C5250B63C400D488EF /* Strings.swift in Sources */,
+				830C1DDE2553562F005A5E7E /* CardView1.swift in Sources */,
 				839676C8250B6A1600D488EF /* KeychainManager.swift in Sources */,
 				839676CF250B6F4500D488EF /* TabBar.swift in Sources */,
 				833B7BBC250A5FF600EDF77E /* SignUpViewModel.swift in Sources */,
@@ -488,10 +532,14 @@
 				8308478525109E1A009CDE27 /* ProfileModel.swift in Sources */,
 				8357C580251F9F4000B4A15A /* LocationSelectorViewModel.swift in Sources */,
 				839676D3250B6F8F00D488EF /* Home.swift in Sources */,
+				83C70F6925586A15005FD30C /* ShimmerView.swift in Sources */,
+				83C70F7025586B53005FD30C /* HistoryViewModel.swift in Sources */,
 				8357C57D251F9D5D00B4A15A /* LocationSelector.swift in Sources */,
 				83FBB651252B1A8D0086C3D1 /* DocumentPicker.swift in Sources */,
 				83B54D4D250BA7D4000D6383 /* String+Ext.swift in Sources */,
+				83A88B1A2557447B00CEE151 /* PreferredLocationModel.swift in Sources */,
 				8308E3EC252D1BC900471D2E /* URL+Ext.swift in Sources */,
+				830C1DD92553541A005A5E7E /* EmptyCardView.swift in Sources */,
 				83C066F92539FC0000C91EF3 /* AcceptApplicationView.swift in Sources */,
 				E132AF1C24F926C800D1B8C3 /* SceneDelegate.swift in Sources */,
 				83B1B765253399B300D51A16 /* ApplicationViewModel.swift in Sources */,
@@ -629,7 +677,7 @@
 		};
 		E132AF2B24F926CA00D1B8C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C9D898AF72546D68F53185D /* Pods-BRIDGE.debug.xcconfig */;
+			baseConfigurationReference = E1D12ECBEDD229199A810432 /* Pods-Bridge - Adopt Your Village.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -650,7 +698,7 @@
 		};
 		E132AF2C24F926CA00D1B8C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14C3723504A365B6BB4E8A06 /* Pods-BRIDGE.release.xcconfig */;
+			baseConfigurationReference = A58D51BDD6EE9EDEEDA1DB7E /* Pods-Bridge - Adopt Your Village.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
